@@ -1,8 +1,9 @@
 module.exports = {
   title: '你好 VuePress',//博客标题
   description: '钊哥带你上王者',//副标题
-  dest: './dist',//配置执行build命令后输出的目录，默认目录为.vuepress
-  port: '7777',
+  // dest: './dist',//配置执行build命令后输出的目录，默认目录为.vuepress
+  // port: '7777',
+  // base:'/ahunsun.github.io/',
   head: [
     ['link', {rel: 'icon', href: './logo.jpg'}],
     ['link', {rel: 'stylesheet', href: '/css/style.css'}],
@@ -16,7 +17,7 @@ module.exports = {
     //侧边栏
     sidebar: require("./sidebar.js"),
     //其他参数配置
-    sidebarDepth: 4,
+    sidebarDepth: 2,
     lastUpdated: 'Last Updated',
     searchMaxSuggestoins: 10,
     serviceWorker: {
