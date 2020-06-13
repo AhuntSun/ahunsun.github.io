@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>07.JavaScript实现图结构 | AhuntSun</title>
+    <meta name="generator" content="VuePress 1.4.1">
+    <link rel="icon" href="https://blog-static.cnblogs.com/files/AhuntSun-blog/sun1.ico">
+    <link rel="stylesheet" href="/css/style.css">
+    <meta name="description" content="Learn and Share">
+    <link rel="preload" href="/assets/css/0.styles.4fb9d3e8.css" as="style"><link rel="preload" href="/assets/js/app.57bbac46.js" as="script"><link rel="preload" href="/assets/js/2.ef9a405e.js" as="script"><link rel="preload" href="/assets/js/18.56daba9a.js" as="script"><link rel="prefetch" href="/assets/js/10.dec4b604.js"><link rel="prefetch" href="/assets/js/100.0e076723.js"><link rel="prefetch" href="/assets/js/101.0809a260.js"><link rel="prefetch" href="/assets/js/102.0bc2c27e.js"><link rel="prefetch" href="/assets/js/103.e189a901.js"><link rel="prefetch" href="/assets/js/104.e1fc3933.js"><link rel="prefetch" href="/assets/js/105.b47b68aa.js"><link rel="prefetch" href="/assets/js/106.66f452fd.js"><link rel="prefetch" href="/assets/js/107.73fa2f48.js"><link rel="prefetch" href="/assets/js/108.dfc30f41.js"><link rel="prefetch" href="/assets/js/109.09c2c39a.js"><link rel="prefetch" href="/assets/js/11.cb3d3b23.js"><link rel="prefetch" href="/assets/js/110.76dd68ef.js"><link rel="prefetch" href="/assets/js/111.4e5e4d0a.js"><link rel="prefetch" href="/assets/js/112.d77fbdd3.js"><link rel="prefetch" href="/assets/js/113.66249cc2.js"><link rel="prefetch" href="/assets/js/114.574d9392.js"><link rel="prefetch" href="/assets/js/115.aed9823c.js"><link rel="prefetch" href="/assets/js/116.b494ed17.js"><link rel="prefetch" href="/assets/js/117.75f1c94b.js"><link rel="prefetch" href="/assets/js/118.3a06621c.js"><link rel="prefetch" href="/assets/js/119.1e352594.js"><link rel="prefetch" href="/assets/js/12.c5180580.js"><link rel="prefetch" href="/assets/js/120.8939b342.js"><link rel="prefetch" href="/assets/js/121.a6d0f65d.js"><link rel="prefetch" href="/assets/js/122.b4bf60e9.js"><link rel="prefetch" href="/assets/js/123.8103946e.js"><link rel="prefetch" href="/assets/js/124.f2054999.js"><link rel="prefetch" href="/assets/js/125.9675f161.js"><link rel="prefetch" href="/assets/js/13.04ba8a11.js"><link rel="prefetch" href="/assets/js/14.101939bf.js"><link rel="prefetch" href="/assets/js/15.b71f01f4.js"><link rel="prefetch" href="/assets/js/16.76343a05.js"><link rel="prefetch" href="/assets/js/17.5c88190a.js"><link rel="prefetch" href="/assets/js/19.3ed19c51.js"><link rel="prefetch" href="/assets/js/20.f005bac9.js"><link rel="prefetch" href="/assets/js/21.ad5a5c49.js"><link rel="prefetch" href="/assets/js/22.ae051ddb.js"><link rel="prefetch" href="/assets/js/23.73fe8e36.js"><link rel="prefetch" href="/assets/js/24.3ad095cf.js"><link rel="prefetch" href="/assets/js/25.7d0deaf5.js"><link rel="prefetch" href="/assets/js/26.076c251e.js"><link rel="prefetch" href="/assets/js/27.aee1a6b2.js"><link rel="prefetch" href="/assets/js/28.ac3ef586.js"><link rel="prefetch" href="/assets/js/29.2f8a694b.js"><link rel="prefetch" href="/assets/js/3.70ca0bea.js"><link rel="prefetch" href="/assets/js/30.296c827f.js"><link rel="prefetch" href="/assets/js/31.659bcbf1.js"><link rel="prefetch" href="/assets/js/32.71fbf615.js"><link rel="prefetch" href="/assets/js/33.05596a52.js"><link rel="prefetch" href="/assets/js/34.19541af0.js"><link rel="prefetch" href="/assets/js/35.46901924.js"><link rel="prefetch" href="/assets/js/36.1fcd46c4.js"><link rel="prefetch" href="/assets/js/37.58037a9b.js"><link rel="prefetch" href="/assets/js/38.0eeeda37.js"><link rel="prefetch" href="/assets/js/39.6c75a5b0.js"><link rel="prefetch" href="/assets/js/4.eb7f563c.js"><link rel="prefetch" href="/assets/js/40.91490fb0.js"><link rel="prefetch" href="/assets/js/41.94b20d75.js"><link rel="prefetch" href="/assets/js/42.17f2fc4c.js"><link rel="prefetch" href="/assets/js/43.570acbcd.js"><link rel="prefetch" href="/assets/js/44.288e5cd4.js"><link rel="prefetch" href="/assets/js/45.6e5959be.js"><link rel="prefetch" href="/assets/js/46.32796616.js"><link rel="prefetch" href="/assets/js/47.a79d5438.js"><link rel="prefetch" href="/assets/js/48.1fabc19b.js"><link rel="prefetch" href="/assets/js/49.ff359e93.js"><link rel="prefetch" href="/assets/js/5.6bbd62ee.js"><link rel="prefetch" href="/assets/js/50.580b5d42.js"><link rel="prefetch" href="/assets/js/51.6b1a9c7b.js"><link rel="prefetch" href="/assets/js/52.f39b372a.js"><link rel="prefetch" href="/assets/js/53.4d139cd1.js"><link rel="prefetch" href="/assets/js/54.4f14d261.js"><link rel="prefetch" href="/assets/js/55.da0d52fb.js"><link rel="prefetch" href="/assets/js/56.bed3a46f.js"><link rel="prefetch" href="/assets/js/57.8d7746dd.js"><link rel="prefetch" href="/assets/js/58.4a4b344f.js"><link rel="prefetch" href="/assets/js/59.b469fb23.js"><link rel="prefetch" href="/assets/js/6.aae4ee29.js"><link rel="prefetch" href="/assets/js/60.03cfae5b.js"><link rel="prefetch" href="/assets/js/61.9e9c7078.js"><link rel="prefetch" href="/assets/js/62.fe7c3326.js"><link rel="prefetch" href="/assets/js/63.b364ccfc.js"><link rel="prefetch" href="/assets/js/64.eb695455.js"><link rel="prefetch" href="/assets/js/65.4df3672b.js"><link rel="prefetch" href="/assets/js/66.d5adf7ee.js"><link rel="prefetch" href="/assets/js/67.73bcdb2b.js"><link rel="prefetch" href="/assets/js/68.52d39769.js"><link rel="prefetch" href="/assets/js/69.16da9649.js"><link rel="prefetch" href="/assets/js/7.a77c4bc0.js"><link rel="prefetch" href="/assets/js/70.cc2c1b5f.js"><link rel="prefetch" href="/assets/js/71.d14de89f.js"><link rel="prefetch" href="/assets/js/72.83a7f54c.js"><link rel="prefetch" href="/assets/js/73.dfa034ba.js"><link rel="prefetch" href="/assets/js/74.0e7489d2.js"><link rel="prefetch" href="/assets/js/75.884917d8.js"><link rel="prefetch" href="/assets/js/76.f0286ce3.js"><link rel="prefetch" href="/assets/js/77.51f9bec0.js"><link rel="prefetch" href="/assets/js/78.f4b2fba1.js"><link rel="prefetch" href="/assets/js/79.697582ad.js"><link rel="prefetch" href="/assets/js/8.c76d25a8.js"><link rel="prefetch" href="/assets/js/80.c310e6e2.js"><link rel="prefetch" href="/assets/js/81.e2216fdb.js"><link rel="prefetch" href="/assets/js/82.830bd2aa.js"><link rel="prefetch" href="/assets/js/83.85b88637.js"><link rel="prefetch" href="/assets/js/84.015125a0.js"><link rel="prefetch" href="/assets/js/85.543f1b77.js"><link rel="prefetch" href="/assets/js/86.8da6542b.js"><link rel="prefetch" href="/assets/js/87.412f1dc9.js"><link rel="prefetch" href="/assets/js/88.ee7b5b60.js"><link rel="prefetch" href="/assets/js/89.2296e899.js"><link rel="prefetch" href="/assets/js/9.10745892.js"><link rel="prefetch" href="/assets/js/90.9dc24ba1.js"><link rel="prefetch" href="/assets/js/91.7f4d07e6.js"><link rel="prefetch" href="/assets/js/92.bbd5a8da.js"><link rel="prefetch" href="/assets/js/93.c0b8594d.js"><link rel="prefetch" href="/assets/js/94.e08dc085.js"><link rel="prefetch" href="/assets/js/95.6a19112a.js"><link rel="prefetch" href="/assets/js/96.2aa4a792.js"><link rel="prefetch" href="/assets/js/97.34736ae0.js"><link rel="prefetch" href="/assets/js/98.1a22b968.js"><link rel="prefetch" href="/assets/js/99.f0e29f80.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.4fb9d3e8.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><!----> <span class="site-name">AhuntSun</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/navitem/git/" class="nav-link">
+  Git应用详解
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="数据结构与算法" class="dropdown-title"><span class="title">数据结构与算法</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>
+          理论篇
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/navitem/algorithm/theory/" class="nav-link router-link-active">
+  JavaScript版基础知识
+</a></li></ul></li><li class="dropdown-item"><h4>
+          实战篇
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/navitem/algorithm/example/2offer/" class="nav-link">
+  剑指offer
+</a></li><li class="dropdown-subitem"><a href="/navitem/algorithm/example/leecode/" class="nav-link">
+  leecode精选
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="好文转载" class="dropdown-title"><span class="title">好文转载</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/navitem/article/browser/" class="nav-link">
+  浏览器工作原理
+</a></li><li class="dropdown-item"><!----> <a href="/navitem/article/es6/" class="nav-link">
+  ES6教程
+</a></li><li class="dropdown-item"><!----> <a href="/navitem/article/toolFunc/" class="nav-link">
+  工具函数
+</a></li></ul></div></div><div class="nav-item"><a href="/navitem/essay/" class="nav-link">
+  随笔整合
+</a></div><div class="nav-item"><a href="/navitem/demo/" class="nav-link">
+  实战Demo
+</a></div><div class="nav-item"><a href="/navitem/esun/" class="nav-link">
+  eSun-UI
+</a></div><div class="nav-item"><a href="/navitem/tech/" class="nav-link">
+  编程技巧
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="工具箱" class="dropdown-title"><span class="title">工具箱</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>
+          在线编辑
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="https://tinypng.com/" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  图片压缩
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></li></ul></li><li class="dropdown-item"><h4>
+          在线服务
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="https://developer.mozilla.org/zh-CN/" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  MDN
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></li><li class="dropdown-subitem"><a href="https://cubic-bezier.com/" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  贝塞尔曲线
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></li><li class="dropdown-subitem"><a href="https://easings.net/en" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  加速度曲线速查
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="实用网站" class="dropdown-title"><span class="title">实用网站</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/navitem/website/1/" class="nav-link">
+  图片编辑
+</a></li><li class="dropdown-item"><!----> <a href="/navitem/website/2/" class="nav-link">
+  样式设计
+</a></li><li class="dropdown-item"><!----> <a href="/navitem/website/3/" class="nav-link">
+  论坛网站
+</a></li><li class="dropdown-item"><!----> <a href="/navitem/website/4/" class="nav-link">
+  在线学习
+</a></li><li class="dropdown-item"><!----> <a href="/navitem/website/5/" class="nav-link">
+  创新社区
+</a></li><li class="dropdown-item"><!----> <a href="/navitem/website/6/" class="nav-link">
+  优质图库
+</a></li><li class="dropdown-item"><!----> <a href="/navitem/website/7/" class="nav-link">
+  UI设计
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="联系我" class="dropdown-title"><span class="title">联系我</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="https://www.cnblogs.com/AhuntSun-blog/" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  博客园
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></li><li class="dropdown-item"><!----> <a href="https://blog.csdn.net/qq_43425487" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  CSDN
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></li><li class="dropdown-item"><!----> <a href="https://juejin.im/user/5dea331b518825123e7ae8d4" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  掘金
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></li><li class="dropdown-item"><!----> <a href="https://github.com/AhuntSun" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  Github
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></li><li class="dropdown-item"><!----> <a href="https://gitee.com/ahuntsun" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  Gitee
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></li></ul></div></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/navitem/git/" class="nav-link">
+  Git应用详解
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="数据结构与算法" class="dropdown-title"><span class="title">数据结构与算法</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>
+          理论篇
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/navitem/algorithm/theory/" class="nav-link router-link-active">
+  JavaScript版基础知识
+</a></li></ul></li><li class="dropdown-item"><h4>
+          实战篇
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/navitem/algorithm/example/2offer/" class="nav-link">
+  剑指offer
+</a></li><li class="dropdown-subitem"><a href="/navitem/algorithm/example/leecode/" class="nav-link">
+  leecode精选
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="好文转载" class="dropdown-title"><span class="title">好文转载</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/navitem/article/browser/" class="nav-link">
+  浏览器工作原理
+</a></li><li class="dropdown-item"><!----> <a href="/navitem/article/es6/" class="nav-link">
+  ES6教程
+</a></li><li class="dropdown-item"><!----> <a href="/navitem/article/toolFunc/" class="nav-link">
+  工具函数
+</a></li></ul></div></div><div class="nav-item"><a href="/navitem/essay/" class="nav-link">
+  随笔整合
+</a></div><div class="nav-item"><a href="/navitem/demo/" class="nav-link">
+  实战Demo
+</a></div><div class="nav-item"><a href="/navitem/esun/" class="nav-link">
+  eSun-UI
+</a></div><div class="nav-item"><a href="/navitem/tech/" class="nav-link">
+  编程技巧
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="工具箱" class="dropdown-title"><span class="title">工具箱</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>
+          在线编辑
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="https://tinypng.com/" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  图片压缩
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></li></ul></li><li class="dropdown-item"><h4>
+          在线服务
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="https://developer.mozilla.org/zh-CN/" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  MDN
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></li><li class="dropdown-subitem"><a href="https://cubic-bezier.com/" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  贝塞尔曲线
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></li><li class="dropdown-subitem"><a href="https://easings.net/en" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  加速度曲线速查
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="实用网站" class="dropdown-title"><span class="title">实用网站</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/navitem/website/1/" class="nav-link">
+  图片编辑
+</a></li><li class="dropdown-item"><!----> <a href="/navitem/website/2/" class="nav-link">
+  样式设计
+</a></li><li class="dropdown-item"><!----> <a href="/navitem/website/3/" class="nav-link">
+  论坛网站
+</a></li><li class="dropdown-item"><!----> <a href="/navitem/website/4/" class="nav-link">
+  在线学习
+</a></li><li class="dropdown-item"><!----> <a href="/navitem/website/5/" class="nav-link">
+  创新社区
+</a></li><li class="dropdown-item"><!----> <a href="/navitem/website/6/" class="nav-link">
+  优质图库
+</a></li><li class="dropdown-item"><!----> <a href="/navitem/website/7/" class="nav-link">
+  UI设计
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="联系我" class="dropdown-title"><span class="title">联系我</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="https://www.cnblogs.com/AhuntSun-blog/" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  博客园
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></li><li class="dropdown-item"><!----> <a href="https://blog.csdn.net/qq_43425487" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  CSDN
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></li><li class="dropdown-item"><!----> <a href="https://juejin.im/user/5dea331b518825123e7ae8d4" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  掘金
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></li><li class="dropdown-item"><!----> <a href="https://github.com/AhuntSun" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  Github
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></li><li class="dropdown-item"><!----> <a href="https://gitee.com/ahuntsun" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  Gitee
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></li></ul></div></div> <!----></nav>  <ul class="sidebar-links"><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading open"><span>JavaScript版数据结构与算法之基础知识</span> <span class="arrow down"></span></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/navitem/algorithm/theory/notes/1.html" class="sidebar-link">01.JavaScript实现栈结构（Stack）</a></li><li><a href="/navitem/algorithm/theory/notes/2.html" class="sidebar-link">02.JavaScript实现队列结构（Queue）</a></li><li><a href="/navitem/algorithm/theory/notes/3.html" class="sidebar-link">03.JavaScript实现单向链表</a></li><li><a href="/navitem/algorithm/theory/notes/4.html" class="sidebar-link">04.JavaScript实现双向链表</a></li><li><a href="/navitem/algorithm/theory/notes/5.html" class="sidebar-link">05.JavaScript实现集合与字典</a></li><li><a href="/navitem/algorithm/theory/notes/6.html" class="sidebar-link">06.JavaScript实现哈希表</a></li><li><a href="/navitem/algorithm/theory/notes/7.html" class="active sidebar-link">07.JavaScript实现图结构</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/navitem/algorithm/theory/notes/7.html#一、图论" class="sidebar-link">一、图论</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/navitem/algorithm/theory/notes/7.html#_1-1-图的简介" class="sidebar-link">1.1.图的简介</a></li><li class="sidebar-sub-header"><a href="/navitem/algorithm/theory/notes/7.html#_1-2-图的表示" class="sidebar-link">1.2.图的表示</a></li></ul></li><li class="sidebar-sub-header"><a href="/navitem/algorithm/theory/notes/7.html#二、封装图结构" class="sidebar-link">二、封装图结构</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/navitem/algorithm/theory/notes/7.html#_2-1-添加字典类和队列类" class="sidebar-link">2.1.添加字典类和队列类</a></li><li class="sidebar-sub-header"><a href="/navitem/algorithm/theory/notes/7.html#_2-2-创建图类" class="sidebar-link">2.2.创建图类</a></li><li class="sidebar-sub-header"><a href="/navitem/algorithm/theory/notes/7.html#_2-3-添加顶点与边" class="sidebar-link">2.3.添加顶点与边</a></li><li class="sidebar-sub-header"><a href="/navitem/algorithm/theory/notes/7.html#_2-4-转换为字符串输出" class="sidebar-link">2.4.转换为字符串输出</a></li><li class="sidebar-sub-header"><a href="/navitem/algorithm/theory/notes/7.html#_2-5-图的遍历" class="sidebar-link">2.5.图的遍历</a></li><li class="sidebar-sub-header"><a href="/navitem/algorithm/theory/notes/7.html#_2-6-完整实现" class="sidebar-link">2.6.完整实现</a></li></ul></li></ul></li><li><a href="/navitem/algorithm/theory/notes/8.html" class="sidebar-link">08.JavaScript实现树结构（一）</a></li><li><a href="/navitem/algorithm/theory/notes/9.html" class="sidebar-link">09.JavaScript实现树结构（二）</a></li><li><a href="/navitem/algorithm/theory/notes/10.html" class="sidebar-link">10.图解红黑树</a></li><li><a href="/navitem/algorithm/theory/notes/11.html" class="sidebar-link">11.JavaScript实现排序算法</a></li></ul></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="_07-javascript实现图结构"><a href="#_07-javascript实现图结构" class="header-anchor">#</a> 07.JavaScript实现图结构</h1> <h2 id="一、图论"><a href="#一、图论" class="header-anchor">#</a> 一、图论</h2> <h3 id="_1-1-图的简介"><a href="#_1-1-图的简介" class="header-anchor">#</a> 1.1.图的简介</h3> <p><strong>什么是图？</strong></p> <ul><li><strong>图结构</strong>是一种与<strong>树结构</strong>有些相似的数据结构；</li> <li><strong>图论</strong>是数学的一个分支，并且，在数学中，树是图的一种；</li> <li>图论以图为研究对象，研究<strong>顶点</strong>和<strong>边</strong>组成的<strong>图形</strong>的数学理论和方法；</li> <li>主要的研究目的为：<strong>事物之间的联系</strong>，<strong>顶点</strong>代表<strong>事物</strong>，<strong>边</strong>代表两个事物间的<strong>关系</strong>；</li></ul> <p><strong>图的特点：</strong></p> <ul><li><strong>一组顶点</strong>：通常用 <strong>V</strong> （Vertex）表示顶点的集合；</li> <li><strong>一组边</strong>：通常用 <strong>E</strong> （Edge）表示边的集合；
+<ul><li>边是顶点和顶点之间的连线；</li> <li>边可以是有向的，也可以是无向的。比如A----B表示无向，A ---&gt; B 表示有向；</li></ul></li></ul> <p><strong>图的常用术语：</strong></p> <ul><li><p><strong>顶点：<strong>表示图中的一个</strong>节点</strong>；</p></li> <li><p><strong>边：<strong>表示</strong>顶点和顶点</strong>给之间的<strong>连线</strong>；</p></li> <li><p><strong>相邻顶点：<strong>由一条边连接在一起的顶点称为</strong>相邻顶点</strong>；</p></li> <li><p><strong>度：<strong>一个顶点的</strong>度</strong>是<strong>相邻顶点的数量</strong>；</p></li> <li><p><strong>路径：</strong></p> <ul><li>**简单路径：**简单路径要求不包含重复的顶点；</li> <li><strong>回路：<strong>第一个顶点和最后一个顶点</strong>相同</strong>的路径称为回路；</li></ul></li> <li><p><strong>无向图：<strong>图中的所有边都是</strong>没有</strong>方向的；</p></li> <li><p><strong>有向图：<strong>图中的所有边都是</strong>有</strong>方向的；</p></li> <li><p>**无权图：**无权图中的边没有任何权重意义；</p></li> <li><p>**带权图：**带权图中的边有一定的权重含义；</p></li></ul> <h3 id="_1-2-图的表示"><a href="#_1-2-图的表示" class="header-anchor">#</a> 1.2.图的表示</h3> <h4 id="邻接矩阵"><a href="#邻接矩阵" class="header-anchor">#</a> 邻接矩阵</h4> <p>表示图的常用方式为：<strong>邻接矩阵</strong>。</p> <ul><li><p>可以使用二维数组来表示邻接矩阵；</p></li> <li><p>邻接矩阵让<strong>每个节点和一个整数相关联</strong>，该<strong>整数作为数组的下标值</strong>；</p></li> <li><p>使用一个<strong>二维数组</strong>来表示顶点之间的<strong>连接</strong>；</p></li></ul> <p><img src="https://gitee.com/ahuntsun/BlogImgs/raw/master/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/%E5%9B%BE/1.png" alt="image-20200303213913574"></p> <p>如上图所示：</p> <ul><li>二维数组中的<strong>0</strong>表示没有连线，<strong>1</strong>表示有连线；</li> <li>如：A[ 0 ] [ 3 ] = 1，表示 A 和 C 之间有连接；</li> <li>邻接矩阵的对角线上的值都为0，表示A - A ，B - B，等自回路都没有连接（自己与自己之间没有连接）；</li> <li>若为无向图，则邻接矩阵应为对角线上元素全为0的对称矩阵；</li></ul> <p><strong>邻接矩阵的问题：</strong></p> <ul><li>如果图是一个<strong>稀疏图</strong>，那么邻接矩阵中将存在<strong>大量的 0</strong>，造成存储空间的浪费；</li></ul> <h4 id="邻接表"><a href="#邻接表" class="header-anchor">#</a> 邻接表</h4> <p>另外一种表示图的常用方式为：<strong>邻接表</strong>。</p> <ul><li>邻接表由图中<strong>每个顶点</strong>以及<strong>和顶点相邻的顶点列表</strong>组成；</li> <li>这个列表可用多种方式存储，比如：**数组/链表/字典（哈希表）**等都可以；</li></ul> <p><img src="https://gitee.com/ahuntsun/BlogImgs/raw/master/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/%E5%9B%BE/2.png" alt="image-20200303215312091"></p> <p>如上图所示：</p> <ul><li>图中可清楚看到<strong>A与B、C、D相邻</strong>，假如要表示这些与A顶点相邻的顶点（边），可以通过将它们作为A的值（value）存入到对应的<strong>数组/链表/字典</strong>中。</li> <li>之后，通过键（key）A可以十分方便地取出对应的数据；</li></ul> <p><strong>邻接表的问题：</strong></p> <ul><li>邻接表可以简单地得出<strong>出度</strong>，即某一顶点指向其他顶点的个数；</li> <li>但是，邻接表计算<strong>入度</strong>（指向某一顶点的其他顶点的个数称为该顶点的入度）十分困难。此时需要构造<strong>逆邻接表</strong>才能有效计算入度；</li></ul> <h2 id="二、封装图结构"><a href="#二、封装图结构" class="header-anchor">#</a> 二、封装图结构</h2> <p>在实现过程中采用<strong>邻接表</strong>的方式来表示边，使用<strong>字典类</strong>来存储邻接表。</p> <h3 id="_2-1-添加字典类和队列类"><a href="#_2-1-添加字典类和队列类" class="header-anchor">#</a> 2.1.添加字典类和队列类</h3> <p>首先需要引入之前实现的，之后会用到的字典类和队列类：</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>    //封装字典类
+function Dictionary(){
+  //字典属性
+  this.items = {}
+
+  //字典操作方法
+  //一.在字典中添加键值对
+  Dictionary.prototype.set = function(key, value){
+    this.items[key] = value
+  }
+
+  //二.判断字典中是否有某个key
+  Dictionary.prototype.has = function(key){
+    return this.items.hasOwnProperty(key)
+  }
+
+  //三.从字典中移除元素
+  Dictionary.prototype.remove = function(key){
+    //1.判断字典中是否有这个key
+    if(!this.has(key)) return false
+
+    //2.从字典中删除key
+    delete this.items[key]
+    return true
+  }
+
+  //四.根据key获取value
+  Dictionary.prototype.get = function(key){
+    return this.has(key) ? this.items[key] : undefined
+  }
+
+  //五.获取所有keys
+  Dictionary.prototype.keys = function(){
+    return Object.keys(this.items)
+  }
+
+  //六.size方法
+  Dictionary.prototype.keys = function(){
+    return this.keys().length
+  }
+
+  //七.clear方法
+  Dictionary.prototype.clear = function(){
+    this.items = {}
+  }
+}
+
+   // 基于数组封装队列类
+    function Queue() {
+    // 属性
+      this.items = []
+    // 方法
+    // 1.将元素加入到队列中
+    Queue.prototype.enqueue = element =&gt; {
+      this.items.push(element)
+    }
+
+    // 2.从队列中删除前端元素
+    Queue.prototype.dequeue = () =&gt; {
+      return this.items.shift()
+    }
+
+    // 3.查看前端的元素
+    Queue.prototype.front = () =&gt; {
+      return this.items[0]
+    }
+
+    // 4.查看队列是否为空
+    Queue.prototype.isEmpty = () =&gt; {
+      return this.items.length == 0;
+    }
+
+    // 5.查看队列中元素的个数
+    Queue.prototype.size = () =&gt; {
+      return this.items.length
+    }
+
+    // 6.toString方法
+    Queue.prototype.toString = () =&gt; {
+      let resultString = ''
+        for (let i of this.items){
+          resultString += i + ' '
+        }
+        return resultString
+      }
+    }
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br><span class="line-number">37</span><br><span class="line-number">38</span><br><span class="line-number">39</span><br><span class="line-number">40</span><br><span class="line-number">41</span><br><span class="line-number">42</span><br><span class="line-number">43</span><br><span class="line-number">44</span><br><span class="line-number">45</span><br><span class="line-number">46</span><br><span class="line-number">47</span><br><span class="line-number">48</span><br><span class="line-number">49</span><br><span class="line-number">50</span><br><span class="line-number">51</span><br><span class="line-number">52</span><br><span class="line-number">53</span><br><span class="line-number">54</span><br><span class="line-number">55</span><br><span class="line-number">56</span><br><span class="line-number">57</span><br><span class="line-number">58</span><br><span class="line-number">59</span><br><span class="line-number">60</span><br><span class="line-number">61</span><br><span class="line-number">62</span><br><span class="line-number">63</span><br><span class="line-number">64</span><br><span class="line-number">65</span><br><span class="line-number">66</span><br><span class="line-number">67</span><br><span class="line-number">68</span><br><span class="line-number">69</span><br><span class="line-number">70</span><br><span class="line-number">71</span><br><span class="line-number">72</span><br><span class="line-number">73</span><br><span class="line-number">74</span><br><span class="line-number">75</span><br><span class="line-number">76</span><br><span class="line-number">77</span><br><span class="line-number">78</span><br><span class="line-number">79</span><br><span class="line-number">80</span><br><span class="line-number">81</span><br><span class="line-number">82</span><br><span class="line-number">83</span><br><span class="line-number">84</span><br><span class="line-number">85</span><br><span class="line-number">86</span><br></div></div><h3 id="_2-2-创建图类"><a href="#_2-2-创建图类" class="header-anchor">#</a> 2.2.创建图类</h3> <p>先创建图类Graph，并添加基本属性，再实现图类的常用方法：</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>    //封装图类
+    function Graph (){
+      //属性：顶点(数组)/边(字典)
+      this.vertexes = []  //顶点
+      this.edges = new Dictionary() //边
+      }
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br></div></div><h3 id="_2-3-添加顶点与边"><a href="#_2-3-添加顶点与边" class="header-anchor">#</a> 2.3.添加顶点与边</h3> <p>如图所示：</p> <p><img src="https://gitee.com/ahuntsun/BlogImgs/raw/master/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/%E5%9B%BE/3.png" alt="image-20200303235132868"></p> <p>创建一个数组对象vertexes存储图的顶点；创建一个字典对象edges存储图的边，其中key为顶点，value为存储key顶点相邻顶点的数组。</p> <p><strong>代码实现：</strong></p> <div class="language- line-numbers-mode"><pre class="language-text"><code>      //添加方法
+      //一.添加顶点
+      Graph.prototype.addVertex = function(v){
+        this.vertexes.push(v)
+        this.edges.set(v, []) //将边添加到字典中，新增的顶点作为键，对应的值为一个存储边的空数组
+      }
+      //二.添加边
+      Graph.prototype.addEdge = function(v1, v2){//传入两个顶点为它们添加边
+        this.edges.get(v1).push(v2)//取出字典对象edges中存储边的数组，并添加关联顶点
+        this.edges.get(v2).push(v1)//表示的是无向表，故要添加互相指向的两条边
+      }
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br></div></div><h3 id="_2-4-转换为字符串输出"><a href="#_2-4-转换为字符串输出" class="header-anchor">#</a> 2.4.转换为字符串输出</h3> <p>为图类Graph添加toString方法，实现以邻接表的形式输出图中各顶点。</p> <p><strong>代码实现：</strong></p> <div class="language- line-numbers-mode"><pre class="language-text"><code>      //三.实现toString方法:转换为邻接表形式
+      Graph.prototype.toString = function (){
+        //1.定义字符串，保存最终结果
+        let resultString = &quot;&quot;
+
+        //2.遍历所有的顶点以及顶点对应的边
+        for (let i = 0; i &lt; this.vertexes.length; i++) {//遍历所有顶点
+          resultString += this.vertexes[i] + '--&gt;'
+          let vEdges = this.edges.get(this.vertexes[i])
+          for (let j = 0; j &lt; vEdges.length; j++) {//遍历字典中每个顶点对应的数组
+            resultString += vEdges[j] + '  ';
+          }
+          resultString += '\n'
+        }
+        return resultString
+      }
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br></div></div><p><strong>测试代码：</strong></p> <div class="language- line-numbers-mode"><pre class="language-text"><code>   //测试代码
+    //1.创建图结构
+    let graph = new Graph()
+
+    //2.添加顶点
+    let myVertexes = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I']
+    for (let i = 0; i &lt; myVertexes.length; i++) {
+      graph.addVertex(myVertexes[i])
+    }
+
+    //3.添加边
+    graph.addEdge('A', 'B')
+    graph.addEdge('A', 'C')
+    graph.addEdge('A', 'D')
+    graph.addEdge('C', 'D')
+    graph.addEdge('C', 'G')
+    graph.addEdge('D', 'G')
+    graph.addEdge('D', 'H')
+    graph.addEdge('B', 'E')
+    graph.addEdge('B', 'F')
+    graph.addEdge('E', 'I')
+
+    //4.输出结果
+    console.log(graph.toString());
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br></div></div><p><strong>测试结果：</strong></p> <p><img src="https://gitee.com/ahuntsun/BlogImgs/raw/master/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/%E5%9B%BE/4.png" alt="image-20200303233737451"></p> <h3 id="_2-5-图的遍历"><a href="#_2-5-图的遍历" class="header-anchor">#</a> 2.5.图的遍历</h3> <h4 id="图的遍历思想"><a href="#图的遍历思想" class="header-anchor">#</a> <strong>图的遍历思想</strong></h4> <ul><li>图的遍历思想与树的遍历思想一样，意味着需要将图中<strong>所有的顶点</strong>都访问一遍，并且不能有<strong>重复的访问</strong>（上面的toString方法会重复访问）；</li></ul> <p><strong>遍历图的两种算法：</strong></p> <ul><li>广度优先搜索（Breadth - First Search，简称<strong>BFS</strong>）;</li> <li>深度优先搜索（Depth - First Search，简称<strong>DFS</strong>）;</li> <li>两种遍历算法都需要指定<strong>第一个被访问的顶点</strong>；</li></ul> <p>为了记录顶点是否被访问过，使用<strong>三种颜色</strong>来表示它们的状态</p> <ul><li><strong>白色</strong>：表示该顶点还没有被访问过；</li> <li><strong>灰色</strong>：表示该顶点被访问过，但其相邻顶点并未完全被访问过；</li> <li><strong>黑色</strong>：表示该顶点被访问过，且其所有相邻顶点都被访问过；</li></ul> <p>首先封装initializeColor方法将图中的所有顶点初始化为白色，代码实现如下：</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>      //四.初始化状态颜色
+      Graph.prototype.initializeColor = function(){
+        let colors = []
+        for (let i = 0; i &lt; this.vertexes.length; i++) {
+           colors[this.vertexes[i]] = 'white';
+        }
+        return colors
+      }
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br></div></div><h4 id="广度优先搜索"><a href="#广度优先搜索" class="header-anchor">#</a> 广度优先搜索</h4> <p>广度优先搜索算法的思路：</p> <ul><li>广度优先搜索算法会从指定的第一个顶点开始遍历图，先访问其所有的相邻顶点，就像一次访问图的一层；</li> <li>也可以说是<strong>先宽后深</strong>地遍历图中的各个顶点；</li></ul> <p><img src="https://gitee.com/ahuntsun/BlogImgs/raw/master/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/%E5%9B%BE/5.png" alt="image-20200303233840691"></p> <p><strong>实现思路：</strong></p> <p>基于<strong>队列</strong>可以简单地实现广度优先搜索算法：</p> <ul><li>首先创建一个队列Q（尾部进，首部出）；</li> <li>调用封装的initializeColor方法将所有顶点初始化为白色；</li> <li>指定第一个顶点A，将A标注为<strong>灰色</strong>（被访问过的节点），并将A放入队列Q中；</li> <li>循环遍历队列中的元素，只要队列Q非空，就执行以下操作：
+<ul><li>先将灰色的A从Q的首部取出；</li> <li>取出A后，将A的所有未被访问过（白色）的相邻顶点依次从队列Q的尾部加入队列，并变为灰色。以此保证，灰色的相邻顶点不重复加入队列；</li> <li>A的全部相邻节点加入Q后，A变为黑色，在下一次循环中被移除Q外；</li></ul></li></ul> <p><strong>代码实现：</strong></p> <div class="language- line-numbers-mode"><pre class="language-text"><code>      //五.实现广度搜索(BFS)
+      //传入指定的第一个顶点和处理结果的函数
+      Graph.prototype.bfs = function(initV, handler){
+        //1.初始化颜色
+        let colors = this.initializeColor()
+
+        //2.创建队列
+        let que = new Queue()
+
+        //3.将顶点加入到队列中
+        que.enqueue(initV)
+
+        //4.循环从队列中取出元素，队列为空才停止
+        while(!que.isEmpty()){
+          //4.1.从队列首部取出一个顶点
+          let v = que.dequeue()
+
+          //4.2.从字典对象edges中获取和该顶点相邻的其他顶点组成的数组
+          let vNeighbours = this.edges.get(v)
+
+          //4.3.将v的颜色变为灰色
+          colors[v] = 'gray'
+
+          //4.4.遍历v所有相邻的顶点vNeighbours,并且加入队列中
+          for (let i = 0; i &lt; vNeighbours.length; i++) {
+            const a = vNeighbours[i];
+            //判断相邻顶点是否被探测过，被探测过则不加入队列中；并且加入队列后变为灰色，表示被探测过
+            if (colors[a] == 'white') {
+              colors[a] = 'gray'
+              que.enqueue(a)
+            }
+          }
+
+          //4.5.处理顶点v
+          handler(v)
+
+          //4.6.顶点v所有白色的相邻顶点都加入队列后，将顶点v设置为黑色。此时黑色顶点v位于队列最前面，进入下一次while循环时会被取出
+          colors[v] = 'black'
+        }
+      }
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br><span class="line-number">37</span><br><span class="line-number">38</span><br><span class="line-number">39</span><br><span class="line-number">40</span><br></div></div><p><strong>过程详解：</strong></p> <p>下为指定的第一个顶点为A时的遍历过程：</p> <ul><li>如 a 图所示，将在字典edges中取出的与A相邻的且未被访问过的白色顶点B、C、D放入队列que中并变为灰色，随后将A变为黑色并移出队列；</li> <li>接着，如图 b 所示，将在字典edges中取出的与B相邻的且未被访问过的白色顶点E、F放入队列que中并变为灰色，随后将B变为黑色并移出队列；</li></ul> <p><img src="https://gitee.com/ahuntsun/BlogImgs/raw/master/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/%E5%9B%BE/6.png" alt="image-20200306144336380"></p> <ul><li>如 c 图所示，将在字典edges中取出的与C相邻的且未被访问过的白色顶点G（A，D也相邻不过已变为灰色，所以不加入队列）放入队列que中并变为灰色，随后将C变为黑色并移出队列；</li> <li>接着，如图 d 所示，将在字典edges中取出的与D相邻的且未被访问过的白色顶点H放入队列que中并变为灰色，随后将D变为黑色并移出队列。</li></ul> <p><img src="https://gitee.com/ahuntsun/BlogImgs/raw/master/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/%E5%9B%BE/7.png" alt="image-20200306144427242"></p> <p>如此循环直到队列中元素为0，即所有顶点都变黑并移出队列后才停止，此时图中顶点已被全部遍历。</p> <p><strong>测试代码：</strong></p> <div class="language- line-numbers-mode"><pre class="language-text"><code>    //测试代码
+    //1.创建图结构
+    let graph = new Graph()
+
+    //2.添加顶点
+    let myVertexes = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I']
+    for (let i = 0; i &lt; myVertexes.length; i++) {
+      graph.addVertex(myVertexes[i])
+    }
+
+    //3.添加边
+    graph.addEdge('A', 'B')
+    graph.addEdge('A', 'C')
+    graph.addEdge('A', 'D')
+    graph.addEdge('C', 'D')
+    graph.addEdge('C', 'G')
+    graph.addEdge('D', 'G')
+    graph.addEdge('D', 'H')
+    graph.addEdge('B', 'E')
+    graph.addEdge('B', 'F')
+    graph.addEdge('E', 'I')
+    
+    //4.测试bfs遍历方法
+    let result = &quot;&quot;
+    graph.bfs(graph.vertexes[0], function(v){
+      result += v + &quot;-&quot;
+    })
+    console.log(result);
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br></div></div><p><strong>测试结果：</strong></p> <p><img src="https://gitee.com/ahuntsun/BlogImgs/raw/master/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/%E5%9B%BE/8.png" alt="image-20200304120023711"></p> <p>可见，安装了广度优先搜索的顺序<strong>不重复</strong>地遍历了<strong>所有</strong>顶点。</p> <h4 id="深度优先搜索"><a href="#深度优先搜索" class="header-anchor">#</a> 深度优先搜索</h4> <p>广度优先算法的思路：</p> <ul><li>深度优先搜索算法将会从指定的第一个顶点开始遍历图，沿着一条路径遍历直到该路径的最后一个顶点都被访问过为止；</li> <li>接着沿原来路径回退并探索下一条路径，即<strong>先深后宽</strong>地遍历图中的各个顶点；</li></ul> <p><img src="https://gitee.com/ahuntsun/BlogImgs/raw/master/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/%E5%9B%BE/9.png" alt="image-20200304120355088"></p> <p><strong>实现思路：</strong></p> <ul><li>可以使用<strong>栈</strong>结构来实现深度优先搜索算法；</li> <li>深度优先搜索算法的遍历顺序与二叉搜索树中的先序遍历较为相似，同样可以使用<strong>递归</strong>来实现（递归的本质就是<strong>函数栈</strong>的调用）。</li></ul> <p>基于递归实现深度优先搜索算法：定义dfs方法用于调用递归方法dfsVisit，定义dfsVisit方法用于递归访问图中的各个顶点。</p> <p>在dfs方法中：</p> <ul><li>首先，调用initializeColor方法将所有顶点初始化为白色；</li> <li>然后，调用dfsVisit方法遍历图的顶点；</li></ul> <p>在dfsVisit方法中：</p> <ul><li>首先，将传入的指定节点v标注为<strong>灰色</strong>；</li> <li>接着，处理顶点V；</li> <li>然后，访问V的相邻顶点；</li> <li>最后，将顶点v标注为黑色；</li></ul> <p><strong>代码实现：</strong></p> <div class="language- line-numbers-mode"><pre class="language-text"><code>      //六.实现深度搜索(DFS)
+      Graph.prototype.dfs = function(initV, handler){
+        //1.初始化顶点颜色
+        let colors = this.initializeColor()
+
+        //2.从某个顶点开始依次递归访问
+        this.dfsVisit(initV, colors, handler)
+      }
+
+      //为了方便递归调用，封装访问顶点的函数，传入三个参数分别表示：指定的第一个顶点、颜色、处理函数
+      Graph.prototype.dfsVisit = function(v, colors, handler){
+        //1.将颜色设置为灰色
+        colors[v] = 'gray'
+
+        //2.处理v顶点
+        handler(v)
+
+        //3.访问V的相邻顶点
+        let vNeighbours = this.edges.get(v)
+        for (let i = 0; i &lt; vNeighbours.length; i++) {
+          let a = vNeighbours[i];
+          //判断相邻顶点是否为白色，若为白色，递归调用函数继续访问
+          if (colors[a] == 'white') {
+            this.dfsVisit(a, colors, handler)
+          }
+          
+        }
+
+        //4.将v设置为黑色
+        colors[v] = 'black'
+      }
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br></div></div><p><strong>过程详解：</strong></p> <p>这里主要解释一下代码中的第3步操作：访问指定顶点的相邻顶点。</p> <ul><li>以指定顶点A为例，先从储存顶点及其对应相邻顶点的字典对象edges中取出由顶点A的相邻顶点组成的数组：</li></ul> <p><img src="https://gitee.com/ahuntsun/BlogImgs/raw/master/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/%E5%9B%BE/10.png" alt="image-20200304155916036"></p> <ul><li><strong>第一步</strong>：A顶点变为灰色，随后进入第一个for循环，遍历A白色的相邻顶点：B、C、D；在该for循环的第1次循环中（执行B），B顶点满足：colors == &quot;white&quot;，触发递归，重新调用该方法；</li> <li><strong>第二步</strong>：B顶点变为灰色，随后进入第二个for循环，遍历B白色的相邻顶点：E、F；在该for循环的第1次循环中（执行E），E顶点满足：colors == &quot;white&quot;，触发递归，重新调用该方法；</li> <li><strong>第三步</strong>：E顶点变为灰色，随后进入第三个for循环，遍历E白色的相邻顶点：I；在该for循环的第1次循环中（执行I），I顶点满足：colors == &quot;white&quot;，触发递归，重新调用该方法；</li> <li><strong>第四步</strong>：I顶点变为灰色，随后进入第四个for循环，由于顶点I的相邻顶点E不满足：colors == &quot;white&quot;，停止递归调用。过程如下图所示：</li></ul> <p><img src="https://gitee.com/ahuntsun/BlogImgs/raw/master/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/%E5%9B%BE/11.png" alt="image-20200304160536187"></p> <ul><li><strong>第五步</strong>：递归结束后一路向上返回，首先回到第三个for循环中继续执行其中的第2、3...次循环，每次循环的执行过程与上面的同理，直到递归再次结束后，再返回到第二个for循环中继续执行其中的第2、3...次循环....以此类推直到将图的所有顶点访问完为止。</li></ul> <p>下图为遍历图中各顶点的完整过程：</p> <ul><li><strong>发现</strong>表示访问了该顶点，状态变为<strong>灰色</strong>；</li> <li><strong>探索</strong>表示既访问了该顶点，也访问了该顶点的全部相邻顶点，状态变为<strong>黑色</strong>；</li> <li>由于在顶点变为灰色后就调用了处理函数handler，所以handler方法的输出顺序为发现顶点的顺序即：A、B、E、I、F、C、D、G、H 。</li></ul> <p><img src="https://gitee.com/ahuntsun/BlogImgs/raw/master/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/%E5%9B%BE/12.png" alt="image-20200304154745646"></p> <p><strong>测试代码：</strong></p> <div class="language- line-numbers-mode"><pre class="language-text"><code>    //测试代码
+    //1.创建图结构
+    let graph = new Graph()
+
+    //2.添加顶点
+    let myVertexes = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I']
+    for (let i = 0; i &lt; myVertexes.length; i++) {
+      graph.addVertex(myVertexes[i])
+    }
+
+    //3.添加边
+    graph.addEdge('A', 'B')
+    graph.addEdge('A', 'C')
+    graph.addEdge('A', 'D')
+    graph.addEdge('C', 'D')
+    graph.addEdge('C', 'G')
+    graph.addEdge('D', 'G')
+    graph.addEdge('D', 'H')
+    graph.addEdge('B', 'E')
+    graph.addEdge('B', 'F')
+    graph.addEdge('E', 'I')
+    
+    //4.测试dfs遍历顶点
+    let result = &quot;&quot;
+    graph.dfs(graph.vertexes[0], function(v){
+      result += v + &quot;-&quot;
+    })
+    console.log(result);
+    
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br></div></div><p><strong>测试结果：</strong></p> <p><img src="https://gitee.com/ahuntsun/BlogImgs/raw/master/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/%E5%9B%BE/13.png" alt="image-20200304125313739"></p> <h3 id="_2-6-完整实现"><a href="#_2-6-完整实现" class="header-anchor">#</a> 2.6.完整实现</h3> <div class="language- line-numbers-mode"><pre class="language-text"><code>    //封装图结构
+    function Graph (){
+      //属性：顶点(数组)/边(字典)
+      this.vertexes = []  //顶点
+      this.edges = new Dictionary() //边
+
+      //方法
+      //添加方法
+      //一.添加顶点
+      Graph.prototype.addVertex = function(v){
+        this.vertexes.push(v)
+        this.edges.set(v, []) //将边添加到字典中，新增的顶点作为键，对应的值为一个存储边的空数组
+      }
+      //二.添加边
+      Graph.prototype.addEdge = function(v1, v2){//传入两个顶点为它们添加边
+        this.edges.get(v1).push(v2)//取出字典对象edges中存储边的数组，并添加关联顶点
+        this.edges.get(v2).push(v1)//表示的是无向表，故要添加互相指向的两条边
+      }
+
+      //三.实现toString方法:转换为邻接表形式
+      Graph.prototype.toString = function (){
+        //1.定义字符串，保存最终结果
+        let resultString = &quot;&quot;
+
+        //2.遍历所有的顶点以及顶点对应的边
+        for (let i = 0; i &lt; this.vertexes.length; i++) {//遍历所有顶点
+          resultString += this.vertexes[i] + '--&gt;'
+          let vEdges = this.edges.get(this.vertexes[i])
+          for (let j = 0; j &lt; vEdges.length; j++) {//遍历字典中每个顶点对应的数组
+            resultString += vEdges[j] + '  ';
+          }
+          resultString += '\n'
+        }
+        return resultString
+      }
+
+      //四.初始化状态颜色
+      Graph.prototype.initializeColor = function(){
+        let colors = []
+        for (let i = 0; i &lt; this.vertexes.length; i++) {
+           colors[this.vertexes[i]] = 'white';
+        }
+        return colors
+      }
+
+      //五.实现广度搜索(BFS)
+      //传入指定的第一个顶点和处理结果的函数
+      Graph.prototype.bfs = function(initV, handler){
+        //1.初始化颜色
+        let colors = this.initializeColor()
+
+        //2.创建队列
+        let que = new Queue()
+
+        //3.将顶点加入到队列中
+        que.enqueue(initV)
+
+        //4.循环从队列中取出元素
+        while(!que.isEmpty()){
+          //4.1.从队列中取出一个顶点
+          let v = que.dequeue()
+
+          //4.2.获取和顶点相相邻的其他顶点
+          let vNeighbours = this.edges.get(v)
+
+          //4.3.将v的颜色变为灰色
+          colors[v] = 'gray'
+
+          //4.4.遍历v所有相邻的顶点vNeighbours,并且加入队列中
+          for (let i = 0; i &lt; vNeighbours.length; i++) {
+            const a = vNeighbours[i];
+            //判断相邻顶点是否被探测过，被探测过则不加入队列中；并且加入队列后变为灰色，表示被探测过
+            if (colors[a] == 'white') {
+              colors[a] = 'gray'
+              que.enqueue(a)
+            }
+          }
+
+          //4.5.处理顶点v
+          handler(v)
+
+          //4.6.顶点v所有白色的相邻顶点都加入队列后，将顶点v设置为黑色。此时黑色顶点v位于队列最前面，进入下一次while循环时会被取出
+          colors[v] = 'black'
+        }
+      }
+
+      //六.实现深度搜索(DFS)
+      Graph.prototype.dfs = function(initV, handler){
+        //1.初始化顶点颜色
+        let colors = this.initializeColor()
+
+        //2.从某个顶点开始依次递归访问
+        this.dfsVisit(initV, colors, handler)
+      }
+
+      //为了方便递归调用，封装访问顶点的函数，传入三个参数分别表示：指定的第一个顶点、颜色、处理函数
+      Graph.prototype.dfsVisit = function(v, colors, handler){
+        //1.将颜色设置为灰色
+        colors[v] = 'gray'
+
+        //2.处理v顶点
+        handler(v)
+
+        //3.访问v相连的其他顶点
+        let vNeighbours = this.edges.get(v)
+        for (let i = 0; i &lt; vNeighbours.length; i++) {
+          let a = vNeighbours[i];
+          //判断相邻顶点是否为白色，若为白色，递归调用函数继续访问
+          if (colors[a] == 'white') {
+            this.dfsVisit(a, colors, handler)
+          }
+          
+        }
+
+        //4.将v设置为黑色
+        colors[v] = 'black'
+      }
+    }
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br><span class="line-number">37</span><br><span class="line-number">38</span><br><span class="line-number">39</span><br><span class="line-number">40</span><br><span class="line-number">41</span><br><span class="line-number">42</span><br><span class="line-number">43</span><br><span class="line-number">44</span><br><span class="line-number">45</span><br><span class="line-number">46</span><br><span class="line-number">47</span><br><span class="line-number">48</span><br><span class="line-number">49</span><br><span class="line-number">50</span><br><span class="line-number">51</span><br><span class="line-number">52</span><br><span class="line-number">53</span><br><span class="line-number">54</span><br><span class="line-number">55</span><br><span class="line-number">56</span><br><span class="line-number">57</span><br><span class="line-number">58</span><br><span class="line-number">59</span><br><span class="line-number">60</span><br><span class="line-number">61</span><br><span class="line-number">62</span><br><span class="line-number">63</span><br><span class="line-number">64</span><br><span class="line-number">65</span><br><span class="line-number">66</span><br><span class="line-number">67</span><br><span class="line-number">68</span><br><span class="line-number">69</span><br><span class="line-number">70</span><br><span class="line-number">71</span><br><span class="line-number">72</span><br><span class="line-number">73</span><br><span class="line-number">74</span><br><span class="line-number">75</span><br><span class="line-number">76</span><br><span class="line-number">77</span><br><span class="line-number">78</span><br><span class="line-number">79</span><br><span class="line-number">80</span><br><span class="line-number">81</span><br><span class="line-number">82</span><br><span class="line-number">83</span><br><span class="line-number">84</span><br><span class="line-number">85</span><br><span class="line-number">86</span><br><span class="line-number">87</span><br><span class="line-number">88</span><br><span class="line-number">89</span><br><span class="line-number">90</span><br><span class="line-number">91</span><br><span class="line-number">92</span><br><span class="line-number">93</span><br><span class="line-number">94</span><br><span class="line-number">95</span><br><span class="line-number">96</span><br><span class="line-number">97</span><br><span class="line-number">98</span><br><span class="line-number">99</span><br><span class="line-number">100</span><br><span class="line-number">101</span><br><span class="line-number">102</span><br><span class="line-number">103</span><br><span class="line-number">104</span><br><span class="line-number">105</span><br><span class="line-number">106</span><br><span class="line-number">107</span><br><span class="line-number">108</span><br><span class="line-number">109</span><br><span class="line-number">110</span><br><span class="line-number">111</span><br><span class="line-number">112</span><br><span class="line-number">113</span><br><span class="line-number">114</span><br><span class="line-number">115</span><br><span class="line-number">116</span><br><span class="line-number">117</span><br><span class="line-number">118</span><br></div></div><blockquote><p>参考资料:<a href="https://www.bilibili.com/video/BV1x7411L7Q7?from=search&amp;seid=3912456004602554239" target="_blank" rel="noopener noreferrer">JavaScript数据结构与算法<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></p></blockquote></div> <footer class="page-edit"><!----> <!----></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/navitem/algorithm/theory/notes/6.html" class="prev">
+        06.JavaScript实现哈希表
+      </a></span> <span class="next"><a href="/navitem/algorithm/theory/notes/8.html">
+        08.JavaScript实现树结构（一）
+      </a>
+      →
+    </span></p></div> </main></div><div class="global-ui"></div></div>
+    <script src="/assets/js/app.57bbac46.js" defer></script><script src="/assets/js/2.ef9a405e.js" defer></script><script src="/assets/js/18.56daba9a.js" defer></script>
+  </body>
+</html>
