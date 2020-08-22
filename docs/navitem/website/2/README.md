@@ -98,3 +98,8 @@
 
 ![](http://ahuntsun.gitee.io/blogimagebed/img/vuepress/website/2/15.png)
 该网站提供了设置图片可显示区域的功能以及相应的`Clip-path`的属性值；
+
+## [16.clip-path](https://www.html.cn/tool/css-clip-path/)
+
+![](http://ahuntsun.gitee.io/blogimagebed/img/vuepress/website/2/16.png)
+功能同上，不过更加便捷和完善。
