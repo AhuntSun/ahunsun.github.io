@@ -16,3 +16,6 @@
 ![](http://ahuntsun.gitee.io/blogimagebed/img/vuepress/website/9/4.png)
 可以根据设定好的模板生成随机的假数据，方便前端调试。
 
+## [5.jQuery插件库](http://www.jq22.com/)
+![](http://ahuntsun.gitee.io/blogimagebed/img/vuepress/website/9/5.png)
+提供个各式各样的 `jQuery` 插件。
