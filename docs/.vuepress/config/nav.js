@@ -67,7 +67,7 @@ module.exports =[
       {text: '创新社区', link: '/navitem/website/5/'},
       {text: '优质图库', link: '/navitem/website/6/'},
       {text: 'UI设计', link: '/navitem/website/7/'},
-      {text: '代码演示', link: '/navitem/website/8/'},
+      {text: '工具网站', link: '/navitem/website/8/'},
       {text: 'JavaScript库', link: '/navitem/website/9/'},
     ]
   },
