@@ -20,9 +20,9 @@
 
 ## [4.Vue 拟态化计算器](http://ahuntsun.gitee.io/vue-calculator/)
 
-![](http://ahuntsun.gitee.io/blogimagebed/img/vuepress/demo/js/demo4.gif)
-
 > [Source Code](https://gitee.com/ahuntsun/Vue-calculator)
+
+![](http://ahuntsun.gitee.io/blogimagebed/img/vuepress/demo/js/demo4.gif)
 
 ## 5.Vue 倒计时动画
 
@@ -81,11 +81,11 @@
 
 > [Source Code](https://gitee.com/ahuntsun/imitation-ui)
 
-![](http://ahuntsun.gitee.io/blogimagebed/img/vuepress/demo/js/demo10.gif)
+![](http://ahuntsun.gitee.io/blogimagebed/img/vuepress/demo/js/demo11.gif)
 
 
 ## [12.Vue 底部导航栏](http://ahuntsun.gitee.io/vue-nav/)
 
 > [Source Code](https://gitee.com/ahuntsun/vue-nav)
 
-![](http://ahuntsun.gitee.io/blogimagebed/img/vuepress/demo/js/demo10.gif)
+![](http://ahuntsun.gitee.io/blogimagebed/img/vuepress/demo/js/demo12.gif)
