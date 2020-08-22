@@ -81,11 +81,11 @@
 
 > [Source Code](https://gitee.com/ahuntsun/imitation-ui)
 
-![](http://ahuntsun.gitee.io/blogimagebed/img/vuepress/demo/js/demo11.gif)
+![](http://ahuntsun.gitee.io/blogimagebed/img/vuepress/demo/js/11.gif)
 
 
 ## [12.Vue 底部导航栏](http://ahuntsun.gitee.io/vue-nav/)
 
 > [Source Code](https://gitee.com/ahuntsun/vue-nav)
 
-![](http://ahuntsun.gitee.io/blogimagebed/img/vuepress/demo/js/demo12.gif)
+![](http://ahuntsun.gitee.io/blogimagebed/img/vuepress/demo/js/12.gif)
