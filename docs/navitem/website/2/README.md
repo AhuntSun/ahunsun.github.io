@@ -47,9 +47,18 @@
 该网站提供了多种主题配色，可以根据需要直接使用。
 ![](http://ahuntsun.gitee.io/blogimagebed/img/vuepress/website/2/8.2.png)
 
+## [8.1.FlatUIColors 配色](https://flatuicolors.com/)
+
+![](http://ahuntsun.gitee.io/blogimagebed/img/vuepress/website/2/8.4.png)
+
+
 ## [8.2.调色板](quanzhanketang.com/colors/colors_picker.html)
 
 ![](http://ahuntsun.gitee.io/blogimagebed/img/vuepress/website/2/8.3.png)
+
+## [8.3.中国色](http://zhongguose.com/#fengyehong)
+
+![](http://ahuntsun.gitee.io/blogimagebed/img/vuepress/website/2/8.5.png)
 
 ## [9.Font Awesome](https://fontawesome.com/icons?d=gallery)
 
