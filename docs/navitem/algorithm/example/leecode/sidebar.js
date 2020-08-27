@@ -3,7 +3,7 @@ module.exports = [
       title:'leecode',
       collapsable: true,
       children: [
-        '/navitem/algorithm/example/leecode/README',
+        '/navitem/algorithm/example/leecode/notes/1',
       ]
     }
   ]

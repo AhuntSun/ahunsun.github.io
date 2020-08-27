@@ -3,7 +3,7 @@ module.exports = [
       title:'剑指offer',
       collapsable: true,
       children: [
-        '/navitem/algorithm/example/2offer/README',
+        '/navitem/algorithm/example/2offer/notes/1',
       ]
     }
   ]
