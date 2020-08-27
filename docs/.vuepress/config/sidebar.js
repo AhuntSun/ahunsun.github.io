@@ -4,6 +4,8 @@ module.exports = {
   '/navitem/git/': require('../../navitem/git/sidebar'),
   // 数据结构与算法
   '/navitem/algorithm/theory/': require('../../navitem/algorithm/theory/sidebar'),
+  '/navitem/algorithm/example/2offer/': require('../../navitem/algorithm/example/2offer/sidebar'),
+  '/navitem/algorithm/example/leecode/': require('../../navitem/algorithm/example/leecode/sidebar'),
   // 优秀文章
   '/navitem/article/notes/browser/': require('../../navitem/article/notes/browser/sidebar'),//!第二个模块下面的侧边栏
   '/navitem/article/notes/es6/': require('../../navitem/article/notes/es6/sidebar'),//!第三个模块下面的侧边栏
