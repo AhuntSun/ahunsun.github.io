@@ -35,7 +35,7 @@ module.exports =[
     text: "eSun-UI",link: '/navitem/esun/'
   },
   {
-    text: "面试宝典",link: '/navitem/tech/'
+    text: "面试宝典",link: '/navitem/tech/FE-interview/'
   },
   //深度为3的导航栏
   {

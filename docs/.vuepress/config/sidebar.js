@@ -14,6 +14,8 @@ module.exports = {
   '/navitem/essay/': require('../../navitem/essay/sidebar'),//!第一个模块下面的侧边栏
   // 实战demo
   '/navitem/demo/': require('../../navitem/demo/sidebar'),
+  // 面试宝典
+  '/navitem/tech/FE-interview/': require('../../navitem/tech/FE-interview/sidebar'),
   // 实用网站
   '/navitem/website/1/': require('../../navitem/website/1/sidebar'),
   '/navitem/website/2/': require('../../navitem/website/2/sidebar'),
