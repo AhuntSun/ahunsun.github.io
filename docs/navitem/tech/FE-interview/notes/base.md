@@ -5,10 +5,6 @@ sidebarDepth: 4
 
 # 基础篇
 
-> [如果您觉得有帮助，可以打赏我](https://upload-images.jianshu.io/upload_images/1480597-1f247397539045cc.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240) ![](![](https://upload-images.jianshu.io/upload_images/1480597-1f247397539045cc.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240))
-
-
-
 ![面试经验谈--来自知乎芋头Live ](http://blog.poetries.top/img-repo/2020/01/23.png)
 
 ##  一、HTML、HTTP、web综合问题

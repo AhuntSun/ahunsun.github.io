@@ -6,9 +6,6 @@ sidebarDepth: 4
 
 # 计算机基础
 
-> [如果您觉得有帮助，可以打赏我](https://upload-images.jianshu.io/upload_images/1480597-1f247397539045cc.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240) ![](![](https://upload-images.jianshu.io/upload_images/1480597-1f247397539045cc.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240))
-
-
 ## 一、网络
 
 ### 1 UDP

@@ -5,8 +5,6 @@ sidebarDepth: 4
 
 # 高频考点
 
-> [如果您觉得有帮助，可以打赏我](https://upload-images.jianshu.io/upload_images/1480597-1f247397539045cc.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240) ![](![](https://upload-images.jianshu.io/upload_images/1480597-1f247397539045cc.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240))
-
 > 来自掘金小册笔记
 
 ## 1 typeof类型判断
