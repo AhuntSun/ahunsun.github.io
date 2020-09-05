@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>01.JavaScript实现栈结构（Stack） | AhuntSun</title>
+    <meta name="generator" content="VuePress 1.5.2">
+    <link rel="icon" href="https://blog-static.cnblogs.com/files/AhuntSun-blog/sun1.ico">
+    <link rel="stylesheet" href="/css/style.css">
+    <script charset="utf-8" src="/js/main.js"></script>
+    <meta name="description" content="🌕今日事,今日毕🌕">
+    <meta name="keywords" content="AhuntSun, vuepress博客, 学习, 分享">
+    <meta name="author" content="AhuntSun">
+    <link rel="preload" href="/assets/css/0.styles.265dc05e.css" as="style"><link rel="preload" href="/assets/js/app.b0601913.js" as="script"><link rel="preload" href="/assets/js/2.39079bb7.js" as="script"><link rel="preload" href="/assets/js/11.b407ef49.js" as="script"><link rel="prefetch" href="/assets/js/10.45ee0c2b.js"><link rel="prefetch" href="/assets/js/100.7e91dc57.js"><link rel="prefetch" href="/assets/js/101.9a53727b.js"><link rel="prefetch" href="/assets/js/102.9dbd6f0c.js"><link rel="prefetch" href="/assets/js/103.2ec33f96.js"><link rel="prefetch" href="/assets/js/104.8049d58f.js"><link rel="prefetch" href="/assets/js/105.20a79a3b.js"><link rel="prefetch" href="/assets/js/106.aa72465a.js"><link rel="prefetch" href="/assets/js/107.da121343.js"><link rel="prefetch" href="/assets/js/108.2d09a256.js"><link rel="prefetch" href="/assets/js/109.e61745b8.js"><link rel="prefetch" href="/assets/js/110.fad61cfc.js"><link rel="prefetch" href="/assets/js/111.0255f8ec.js"><link rel="prefetch" href="/assets/js/112.948bcd68.js"><link rel="prefetch" href="/assets/js/113.cf4371d7.js"><link rel="prefetch" href="/assets/js/114.dc6fe7d3.js"><link rel="prefetch" href="/assets/js/115.eb78c3dc.js"><link rel="prefetch" href="/assets/js/116.fb3c3440.js"><link rel="prefetch" href="/assets/js/117.c2b586ca.js"><link rel="prefetch" href="/assets/js/118.da53e4f9.js"><link rel="prefetch" href="/assets/js/119.9c25f9fc.js"><link rel="prefetch" href="/assets/js/12.11166a53.js"><link rel="prefetch" href="/assets/js/120.1d80f245.js"><link rel="prefetch" href="/assets/js/121.68bd7c29.js"><link rel="prefetch" href="/assets/js/122.fdc0a447.js"><link rel="prefetch" href="/assets/js/123.364ac2a8.js"><link rel="prefetch" href="/assets/js/124.dc2bed8e.js"><link rel="prefetch" href="/assets/js/125.bd9294cb.js"><link rel="prefetch" href="/assets/js/126.d402a939.js"><link rel="prefetch" href="/assets/js/127.d379f310.js"><link rel="prefetch" href="/assets/js/128.c84966a5.js"><link rel="prefetch" href="/assets/js/129.659379d0.js"><link rel="prefetch" href="/assets/js/13.d2399a3d.js"><link rel="prefetch" href="/assets/js/130.35e6b6a2.js"><link rel="prefetch" href="/assets/js/14.8caa2a1e.js"><link rel="prefetch" href="/assets/js/15.f2adb21d.js"><link rel="prefetch" href="/assets/js/16.6f261a0c.js"><link rel="prefetch" href="/assets/js/17.685c565e.js"><link rel="prefetch" href="/assets/js/18.41530140.js"><link rel="prefetch" href="/assets/js/19.c0492364.js"><link rel="prefetch" href="/assets/js/20.76a6a882.js"><link rel="prefetch" href="/assets/js/21.5c400fc2.js"><link rel="prefetch" href="/assets/js/22.97329f20.js"><link rel="prefetch" href="/assets/js/23.637ef9cc.js"><link rel="prefetch" href="/assets/js/24.8867221e.js"><link rel="prefetch" href="/assets/js/25.b97cf86f.js"><link rel="prefetch" href="/assets/js/26.74761763.js"><link rel="prefetch" href="/assets/js/27.855ba5a1.js"><link rel="prefetch" href="/assets/js/28.77addf61.js"><link rel="prefetch" href="/assets/js/29.52d13e9e.js"><link rel="prefetch" href="/assets/js/3.1842561f.js"><link rel="prefetch" href="/assets/js/30.6b3c337e.js"><link rel="prefetch" href="/assets/js/31.39536375.js"><link rel="prefetch" href="/assets/js/32.33b12180.js"><link rel="prefetch" href="/assets/js/33.a6124111.js"><link rel="prefetch" href="/assets/js/34.996b9142.js"><link rel="prefetch" href="/assets/js/35.e33cad94.js"><link rel="prefetch" href="/assets/js/36.4f4c031f.js"><link rel="prefetch" href="/assets/js/37.421a7a69.js"><link rel="prefetch" href="/assets/js/38.048d7d4c.js"><link rel="prefetch" href="/assets/js/39.68e2eb05.js"><link rel="prefetch" href="/assets/js/4.e00be33d.js"><link rel="prefetch" href="/assets/js/40.d5dbd643.js"><link rel="prefetch" href="/assets/js/41.c62088ec.js"><link rel="prefetch" href="/assets/js/42.593b19e9.js"><link rel="prefetch" href="/assets/js/43.c4c7b7dd.js"><link rel="prefetch" href="/assets/js/44.1805103a.js"><link rel="prefetch" href="/assets/js/45.ca4c060a.js"><link rel="prefetch" href="/assets/js/46.06724024.js"><link rel="prefetch" href="/assets/js/47.fb3fde17.js"><link rel="prefetch" href="/assets/js/48.4f9b0737.js"><link rel="prefetch" href="/assets/js/49.9c388022.js"><link rel="prefetch" href="/assets/js/5.241d7fcd.js"><link rel="prefetch" href="/assets/js/50.06a0b9c5.js"><link rel="prefetch" href="/assets/js/51.6e40e565.js"><link rel="prefetch" href="/assets/js/52.4a8dde8c.js"><link rel="prefetch" href="/assets/js/53.b9f38421.js"><link rel="prefetch" href="/assets/js/54.4c25996d.js"><link rel="prefetch" href="/assets/js/55.cb79df0a.js"><link rel="prefetch" href="/assets/js/56.b5a0144a.js"><link rel="prefetch" href="/assets/js/57.356f4d81.js"><link rel="prefetch" href="/assets/js/58.9f0a3b3a.js"><link rel="prefetch" href="/assets/js/59.dbfd24e4.js"><link rel="prefetch" href="/assets/js/6.8525e477.js"><link rel="prefetch" href="/assets/js/60.28ccf65f.js"><link rel="prefetch" href="/assets/js/61.6ac05c36.js"><link rel="prefetch" href="/assets/js/62.1421efab.js"><link rel="prefetch" href="/assets/js/63.31644a5d.js"><link rel="prefetch" href="/assets/js/64.f68da1e0.js"><link rel="prefetch" href="/assets/js/65.b24f5397.js"><link rel="prefetch" href="/assets/js/66.49f9e37a.js"><link rel="prefetch" href="/assets/js/67.53f37240.js"><link rel="prefetch" href="/assets/js/68.7ea9b5e6.js"><link rel="prefetch" href="/assets/js/69.1d826a0d.js"><link rel="prefetch" href="/assets/js/7.2f68934b.js"><link rel="prefetch" href="/assets/js/70.70e253a1.js"><link rel="prefetch" href="/assets/js/71.59822167.js"><link rel="prefetch" href="/assets/js/72.08ca9d22.js"><link rel="prefetch" href="/assets/js/73.7d3c99dd.js"><link rel="prefetch" href="/assets/js/74.f6c27178.js"><link rel="prefetch" href="/assets/js/75.c1680a86.js"><link rel="prefetch" href="/assets/js/76.afb1d474.js"><link rel="prefetch" href="/assets/js/77.067a9cbe.js"><link rel="prefetch" href="/assets/js/78.9589bc9b.js"><link rel="prefetch" href="/assets/js/79.febdf489.js"><link rel="prefetch" href="/assets/js/8.4dc4cb23.js"><link rel="prefetch" href="/assets/js/80.15b95dc8.js"><link rel="prefetch" href="/assets/js/81.2f7360a3.js"><link rel="prefetch" href="/assets/js/82.7f97813d.js"><link rel="prefetch" href="/assets/js/83.3cfc5e9a.js"><link rel="prefetch" href="/assets/js/84.4644cb16.js"><link rel="prefetch" href="/assets/js/85.26be6e22.js"><link rel="prefetch" href="/assets/js/86.df7150ac.js"><link rel="prefetch" href="/assets/js/87.f58ffe38.js"><link rel="prefetch" href="/assets/js/88.5030c5ad.js"><link rel="prefetch" href="/assets/js/89.9344635c.js"><link rel="prefetch" href="/assets/js/9.23c2dab8.js"><link rel="prefetch" href="/assets/js/90.5fef54bf.js"><link rel="prefetch" href="/assets/js/91.456bbb97.js"><link rel="prefetch" href="/assets/js/92.0ff05e99.js"><link rel="prefetch" href="/assets/js/93.41e0fdea.js"><link rel="prefetch" href="/assets/js/94.7c636190.js"><link rel="prefetch" href="/assets/js/95.f263867e.js"><link rel="prefetch" href="/assets/js/96.ce0f8277.js"><link rel="prefetch" href="/assets/js/97.de49c6b0.js"><link rel="prefetch" href="/assets/js/98.42595a72.js"><link rel="prefetch" href="/assets/js/99.da91ad4c.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.265dc05e.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><!----> <span class="site-name">AhuntSun</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/navitem/git/" class="nav-link">
+  Git应用详解
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="数据结构与算法" class="dropdown-title"><span class="title">数据结构与算法</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>
+          理论篇
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/navitem/algorithm/theory/" class="nav-link router-link-active">
+  JavaScript版基础知识
+</a></li></ul></li><li class="dropdown-item"><h4>
+          实战篇
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/navitem/algorithm/example/2offer/" class="nav-link">
+  剑指offer
+</a></li><li class="dropdown-subitem"><a href="/navitem/algorithm/example/leecode/" class="nav-link">
+  leecode精选
+</a></li></ul></li></ul></div></div><div class="nav-item"><a href="/navitem/article/" class="nav-link">
+  好文转载
+</a></div><div class="nav-item"><a href="/navitem/essay/" class="nav-link">
+  随笔整合
+</a></div><div class="nav-item"><a href="/navitem/demo/" class="nav-link">
+  实战Demo
+</a></div><div class="nav-item"><a href="/navitem/esun/" class="nav-link">
+  eSun-UI
+</a></div><div class="nav-item"><a href="/navitem/tech/FE-interview/" class="nav-link">
+  面试宝典
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="工具箱" class="dropdown-title"><span class="title">工具箱</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>
+          在线编辑
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="https://tinypng.com/" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  图片压缩
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></li></ul></li><li class="dropdown-item"><h4>
+          在线服务
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="https://developer.mozilla.org/zh-CN/" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  MDN
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></li><li class="dropdown-subitem"><a href="https://cubic-bezier.com/" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  贝塞尔曲线
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></li><li class="dropdown-subitem"><a href="https://easings.net/en" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  加速度曲线速查
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="实用网站" class="dropdown-title"><span class="title">实用网站</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/navitem/website/1/" class="nav-link">
+  图片编辑
+</a></li><li class="dropdown-item"><!----> <a href="/navitem/website/2/" class="nav-link">
+  样式设计
+</a></li><li class="dropdown-item"><!----> <a href="/navitem/website/3/" class="nav-link">
+  论坛网站
+</a></li><li class="dropdown-item"><!----> <a href="/navitem/website/4/" class="nav-link">
+  在线学习
+</a></li><li class="dropdown-item"><!----> <a href="/navitem/website/5/" class="nav-link">
+  创新社区
+</a></li><li class="dropdown-item"><!----> <a href="/navitem/website/6/" class="nav-link">
+  优质图库
+</a></li><li class="dropdown-item"><!----> <a href="/navitem/website/7/" class="nav-link">
+  UI设计
+</a></li><li class="dropdown-item"><!----> <a href="/navitem/website/8/" class="nav-link">
+  工具网站
+</a></li><li class="dropdown-item"><!----> <a href="/navitem/website/9/" class="nav-link">
+  JavaScript库
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="联系我" class="dropdown-title"><span class="title">联系我</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="https://www.cnblogs.com/AhuntSun-blog/" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  博客园
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></li><li class="dropdown-item"><!----> <a href="https://blog.csdn.net/qq_43425487" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  CSDN
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></li><li class="dropdown-item"><!----> <a href="https://juejin.im/user/5dea331b518825123e7ae8d4" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  掘金
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></li><li class="dropdown-item"><!----> <a href="https://github.com/AhuntSun" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  Github
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></li><li class="dropdown-item"><!----> <a href="https://gitee.com/ahuntsun" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  Gitee
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></li></ul></div></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/navitem/git/" class="nav-link">
+  Git应用详解
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="数据结构与算法" class="dropdown-title"><span class="title">数据结构与算法</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>
+          理论篇
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/navitem/algorithm/theory/" class="nav-link router-link-active">
+  JavaScript版基础知识
+</a></li></ul></li><li class="dropdown-item"><h4>
+          实战篇
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/navitem/algorithm/example/2offer/" class="nav-link">
+  剑指offer
+</a></li><li class="dropdown-subitem"><a href="/navitem/algorithm/example/leecode/" class="nav-link">
+  leecode精选
+</a></li></ul></li></ul></div></div><div class="nav-item"><a href="/navitem/article/" class="nav-link">
+  好文转载
+</a></div><div class="nav-item"><a href="/navitem/essay/" class="nav-link">
+  随笔整合
+</a></div><div class="nav-item"><a href="/navitem/demo/" class="nav-link">
+  实战Demo
+</a></div><div class="nav-item"><a href="/navitem/esun/" class="nav-link">
+  eSun-UI
+</a></div><div class="nav-item"><a href="/navitem/tech/FE-interview/" class="nav-link">
+  面试宝典
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="工具箱" class="dropdown-title"><span class="title">工具箱</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>
+          在线编辑
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="https://tinypng.com/" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  图片压缩
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></li></ul></li><li class="dropdown-item"><h4>
+          在线服务
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="https://developer.mozilla.org/zh-CN/" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  MDN
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></li><li class="dropdown-subitem"><a href="https://cubic-bezier.com/" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  贝塞尔曲线
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></li><li class="dropdown-subitem"><a href="https://easings.net/en" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  加速度曲线速查
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="实用网站" class="dropdown-title"><span class="title">实用网站</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/navitem/website/1/" class="nav-link">
+  图片编辑
+</a></li><li class="dropdown-item"><!----> <a href="/navitem/website/2/" class="nav-link">
+  样式设计
+</a></li><li class="dropdown-item"><!----> <a href="/navitem/website/3/" class="nav-link">
+  论坛网站
+</a></li><li class="dropdown-item"><!----> <a href="/navitem/website/4/" class="nav-link">
+  在线学习
+</a></li><li class="dropdown-item"><!----> <a href="/navitem/website/5/" class="nav-link">
+  创新社区
+</a></li><li class="dropdown-item"><!----> <a href="/navitem/website/6/" class="nav-link">
+  优质图库
+</a></li><li class="dropdown-item"><!----> <a href="/navitem/website/7/" class="nav-link">
+  UI设计
+</a></li><li class="dropdown-item"><!----> <a href="/navitem/website/8/" class="nav-link">
+  工具网站
+</a></li><li class="dropdown-item"><!----> <a href="/navitem/website/9/" class="nav-link">
+  JavaScript库
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="联系我" class="dropdown-title"><span class="title">联系我</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="https://www.cnblogs.com/AhuntSun-blog/" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  博客园
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></li><li class="dropdown-item"><!----> <a href="https://blog.csdn.net/qq_43425487" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  CSDN
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></li><li class="dropdown-item"><!----> <a href="https://juejin.im/user/5dea331b518825123e7ae8d4" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  掘金
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></li><li class="dropdown-item"><!----> <a href="https://github.com/AhuntSun" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  Github
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></li><li class="dropdown-item"><!----> <a href="https://gitee.com/ahuntsun" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  Gitee
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></li></ul></div></div> <!----></nav>  <ul class="sidebar-links"><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading open"><span>JavaScript版数据结构与算法之基础知识</span> <span class="arrow down"></span></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/navitem/algorithm/theory/notes/1.html" aria-current="page" class="active sidebar-link">01.JavaScript实现栈结构（Stack）</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/navitem/algorithm/theory/notes/1.html#一、前言" class="sidebar-link">一、前言</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/navitem/algorithm/theory/notes/1.html#_1-1-什么是数据结构？" class="sidebar-link">1.1.什么是数据结构？</a></li><li class="sidebar-sub-header"><a href="/navitem/algorithm/theory/notes/1.html#_1-2-什么是算法？" class="sidebar-link">1.2.什么是算法？</a></li></ul></li><li class="sidebar-sub-header"><a href="/navitem/algorithm/theory/notes/1.html#二、栈结构（stack）" class="sidebar-link">二、栈结构（Stack）</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/navitem/algorithm/theory/notes/1.html#_2-1-简介" class="sidebar-link">2.1.简介</a></li><li class="sidebar-sub-header"><a href="/navitem/algorithm/theory/notes/1.html#_2-2-封装栈类" class="sidebar-link">2.2.封装栈类</a></li></ul></li></ul></li><li><a href="/navitem/algorithm/theory/notes/2.html" class="sidebar-link">02.JavaScript实现队列结构（Queue）</a></li><li><a href="/navitem/algorithm/theory/notes/3.html" class="sidebar-link">03.JavaScript实现单向链表</a></li><li><a href="/navitem/algorithm/theory/notes/4.html" class="sidebar-link">04.JavaScript实现双向链表</a></li><li><a href="/navitem/algorithm/theory/notes/5.html" class="sidebar-link">05.JavaScript实现集合与字典</a></li><li><a href="/navitem/algorithm/theory/notes/6.html" class="sidebar-link">06.JavaScript实现哈希表</a></li><li><a href="/navitem/algorithm/theory/notes/7.html" class="sidebar-link">07.JavaScript实现图结构</a></li><li><a href="/navitem/algorithm/theory/notes/8.html" class="sidebar-link">08.JavaScript实现树结构（一）</a></li><li><a href="/navitem/algorithm/theory/notes/9.html" class="sidebar-link">09.JavaScript实现树结构（二）</a></li><li><a href="/navitem/algorithm/theory/notes/10.html" class="sidebar-link">10.图解红黑树</a></li><li><a href="/navitem/algorithm/theory/notes/11.html" class="sidebar-link">11.JavaScript实现排序算法</a></li></ul></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="_01-javascript实现栈结构（stack）"><a href="#_01-javascript实现栈结构（stack）" class="header-anchor">#</a> 01.JavaScript实现栈结构（Stack）</h1> <h2 id="一、前言"><a href="#一、前言" class="header-anchor">#</a> 一、前言</h2> <h3 id="_1-1-什么是数据结构？"><a href="#_1-1-什么是数据结构？" class="header-anchor">#</a> 1.1.什么是数据结构？</h3> <p>数据结构就是在计算机中，存储和组织数据的方式。</p> <p>例如：图书管理，怎样摆放图书才能既能放很多书，也方便取？</p> <p>主要需要考虑两个问题：</p> <ul><li>操作一：新书怎么插入？</li> <li>操作二：怎么找到某本指定的书？</li></ul> <p><strong>常见的数据结构：</strong></p> <ul><li><strong>数组</strong>（Aarray）</li> <li><strong>栈</strong>（Stack）</li> <li><strong>链表</strong>（Linked List）</li> <li><strong>图</strong>（Graph）</li> <li><strong>散列表</strong>（Hash）</li> <li><strong>队列</strong>（Queue）</li> <li><strong>树</strong>（Tree）</li> <li><strong>堆</strong>（Heap）</li></ul> <p><strong>注意</strong>：数据结构与算法与语言无关，常见的编程语言都有<strong>直接或间接</strong>的使用上述常见的数据结构。</p> <h3 id="_1-2-什么是算法？"><a href="#_1-2-什么是算法？" class="header-anchor">#</a> 1.2.什么是算法？</h3> <p>算法（Algorithm）的定义</p> <ul><li>一个有限指令集，每条指令的描述不依赖于语言；</li> <li>接收一些输入（有些情况下不需要输入）；</li> <li>产生输入；</li> <li>一定在有限步骤之后终止；</li></ul> <p>算法通俗理解：解决问题的办法/步骤逻辑。数据结构的实现，离不开算法。</p> <h2 id="二、栈结构（stack）"><a href="#二、栈结构（stack）" class="header-anchor">#</a> 二、栈结构（Stack）</h2> <h3 id="_2-1-简介"><a href="#_2-1-简介" class="header-anchor">#</a> 2.1.简介</h3> <p>数组是一个线性结构，并且可以在数组的<strong>任意位置</strong>插入和删除元素。而<strong>栈和队列</strong>就是比较常见的<strong>受限的线性结构</strong>。如下图所示：</p> <p><img src="https://gitee.com/ahuntsun/BlogImgs/raw/master/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/%E6%A0%88/1.png" alt="image-20200226131817102"></p> <p>栈的特点为<strong>先进后出，后进先出</strong>（LIFO：last in first out）。</p> <p><strong>程序中的栈结构：</strong></p> <ul><li><p><strong>函数调用栈</strong>：A（B（C（D（））））：即A函数中调用B，B调用C，C调用D；在A执行的过程中会将A压入栈，随后B执行时B也被压入栈，函数C和D执行时也会被压入栈。所以当前栈的顺序为：A-&gt;B-&gt;C-&gt;D（栈顶）；函数D执行完之后，会弹出栈被释放，弹出栈的顺序为D-&gt;C-&gt;B-&gt;A;</p></li> <li><p><strong>递归</strong>：为什么没有停止条件的递归会造成栈溢出？比如函数A为递归函数，不断地调用自己（因为函数还没有执行完，不会把函数弹出栈），不停地把相同的函数A压入栈，最后造成<strong>栈溢出</strong>（Stack Overfloat）</p></li></ul> <p>3.练习：题目：有6个元素6，5，4，3，2，1按顺序进栈，问下列哪一个不是合法的出栈顺序？</p> <ul><li>A：5	4	3	6	1	2			（√）</li> <li>B：4     5     3    2    1    6          （√）</li> <li>C：3      4     6   5     2    1         （×）</li> <li>D：2      3     4     1     5   6        （√）</li></ul> <p>题目所说的按顺序进栈指的不是一次性全部进栈，而是有进有出，进栈顺序为6 -&gt; 5 -&gt; 4 -&gt; 3 -&gt; 2 -&gt; 1。</p> <p>解析：</p> <ul><li>A答案：65进栈，5出栈，4进栈出栈，3进栈出栈，6出栈，21进栈，1出栈，2出栈（整体入栈顺序符合654321）;</li> <li>B答案：654进栈，4出栈，5出栈，3进栈出栈，2进栈出栈，1进栈出栈，6出栈（整体的入栈顺序符合654321）;</li> <li>C答案：6543进栈，3出栈，4出栈，之后应该5出栈而不是6，所以错误；</li> <li>D答案：65432进栈，2出栈，3出栈，4出栈，1进栈出栈，5出栈，6出栈。符合入栈顺序；</li></ul> <p><strong>栈常见的操作：</strong></p> <ul><li>push（element）：添加一个新元素到栈顶位置；</li> <li>pop（）：移除栈顶的元素，同时返回被移除的元素；</li> <li>peek（）：返回栈顶的元素，不对栈做任何修改（该方法不会移除栈顶的元素，仅仅返回它）；</li> <li>isEmpty（）：如果栈里没有任何元素就返回true，否则返回false；</li> <li>size（）：返回栈里的元素个数。这个方法和数组的length属性类似；</li> <li>toString（）：将栈结构的内容以字符串的形式返回。</li></ul> <h3 id="_2-2-封装栈类"><a href="#_2-2-封装栈类" class="header-anchor">#</a> 2.2.封装栈类</h3> <p><strong>代码实现：</strong></p> <div class="language- line-numbers-mode"><pre class="language-text"><code>    // 封装栈类
+    function Stack(){
+      // 栈中的属性
+      this.items =[]
+
+      // 栈的相关操作
+      // 1.push():将元素压入栈
+      //方式一(不推荐)：给对象添加方法，其他对象不能复用
+      // this.push = () =&gt; {
+      // }
+      
+      //方式二(推荐)：给Stack类添加方法，能够多对象复用
+      Stack.prototype.push = function(element) {
+      // 利用数组item的push方法实现Stack类的pop方法
+        this.items.push(element)
+      }
+
+      // 2.pop():从栈中取出元素
+      Stack.prototype.pop = () =&gt; {
+      // 利用数组item的pop方法实现Stack类的pop方法
+        return this.items.pop()
+      }
+
+      // 3.peek():查看一下栈顶元素
+      Stack.prototype.peek = () =&gt; {
+        return this.items[this.items.length - 1]
+      }
+
+      // 4.isEmpty():判断栈是否为空
+      Stack.prototype.isEmpty = () =&gt; {
+      // 两个小时的教训啊不是this.length(不是Stack对象的length，Stack类没有length属性啊)，而是			Stack类中定义的数组items才有length属性呀
+        return this.items.length == 0 
+      }
+
+      // 5.size():获取栈中元素的个数
+      Stack.prototype.size = () =&gt; {
+        return this.items.length
+      }
+
+      // 6.toString():以字符串形式输出栈内数据
+      Stack.prototype.toString = () =&gt; {
+        //希望输出的形式：20 10 12 8 7
+        let resultString = ''
+        for (let i of this.items){
+          resultString += i + ' '
+        }
+        return resultString
+      }
+    }
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br><span class="line-number">37</span><br><span class="line-number">38</span><br><span class="line-number">39</span><br><span class="line-number">40</span><br><span class="line-number">41</span><br><span class="line-number">42</span><br><span class="line-number">43</span><br><span class="line-number">44</span><br><span class="line-number">45</span><br><span class="line-number">46</span><br><span class="line-number">47</span><br><span class="line-number">48</span><br><span class="line-number">49</span><br></div></div><p><strong>测试代码：</strong></p> <div class="language- line-numbers-mode"><pre class="language-text"><code> // 栈的使用
+    let  s = new Stack()
+    s.push(20)
+    s.push(10)
+    s.push(100)
+    s.push(77)
+    console.log(s)													//65
+
+    console.log(s.pop());											//68
+    console.log(s.pop());											//69
+    
+    console.log(s.peek());											//71
+	console.log(s.isEmpty());										//72
+   
+    console.log(s.size());											//74
+    console.log(s.toString());										//75
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br></div></div><p><strong>测试结果：</strong></p> <p><img src="https://gitee.com/ahuntsun/BlogImgs/raw/master/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/%E6%A0%88/2.png" alt="image-20200305205050816"></p> <p><strong>栈结构的简单应用：</strong></p> <p>利用栈结构的特点封装十进至转换为二进至的函数：</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>    //简单应用：
+    //封装函数：将十进制转成二进制(十转二的运算最后倒叙取余的特点符合栈'先进后出')
+    let dec2bin = decNumber =&gt; {
+      //1.定义一个栈对象，保存余数
+      var  stack = new Stack()
+
+      // 2.循环操作
+      while(decNumber &gt; 0){
+        // 2.1.获取余数并放入栈中
+        stack.push(decNumber % 2)
+        // 2.2.获取整除后的结果作为下一次运算的数字(floor:向下取整)
+        decNumber = Math.floor(decNumber / 2)
+      }
+
+      // 3.从栈中取出0和1
+      let  binaryString = '';
+      let a = stack.items.length
+     while(stack.items.length != 0){
+        binaryString += stack.pop();
+      }
+      return binaryString;
+    }
+    
+    //测试代码
+    console.log(dec2bin(10));										//103
+    console.log(dec2bin(100));										//104
+    console.log(dec2bin(1000));										//105
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br></div></div><p><strong>测试结果：</strong></p> <p><img src="https://gitee.com/ahuntsun/BlogImgs/raw/master/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/%E6%A0%88/3.png" alt="image-20200305205547226"></p> <blockquote><p>参考资料:<a href="https://www.bilibili.com/video/BV1x7411L7Q7?from=search&amp;seid=3912456004602554239" target="_blank" rel="noopener noreferrer">JavaScript数据结构与算法<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></p></blockquote></div> <footer class="page-edit"><!----> <div class="last-updated"><span class="prefix">最后更新于:</span> <span class="time">2020年6月13日星期六晚上7点32分</span></div></footer> <div class="page-nav"><p class="inner"><!----> <span class="next"><a href="/navitem/algorithm/theory/notes/2.html">
+        02.JavaScript实现队列结构（Queue）
+      </a>
+      →
+    </span></p></div> </main></div><div class="global-ui"><!----></div></div>
+    <script src="/assets/js/app.b0601913.js" defer></script><script src="/assets/js/2.39079bb7.js" defer></script><script src="/assets/js/11.b407ef49.js" defer></script>
+  </body>
+</html>

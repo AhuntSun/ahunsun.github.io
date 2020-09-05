@@ -1,0 +1,110 @@
+#app .navbar .home-link span:before{
+  display: inline-block;
+  content: "";
+  width: 2.4rem; 
+  height: 2.4rem;  
+  background: url('https://blog-static.cnblogs.com/files/AhuntSun-blog/sun1.ico') no-repeat;
+  background-size: 100% 100%;
+  vertical-align: middle;
+}
+
+/* 禁止选中内容 */
+.home .hero, .home .footer, .theme-container .navbar, .sidebar{
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+.hero img{
+  border-radius: 5px;
+  box-shadow: 2px 2px 5px 0 rgba(0,0,0,.3); 
+}
+
+.hero img:hover {
+  filter: grayscale(80%);
+}
+
+.home .hero .action .action-button{
+  position: relative;
+  display: inline-block;
+  background-color: #fff;
+  border-bottom: none;
+  /* padding: 15px 30px; */
+  color: #000;
+  text-transform: uppercase;
+  letter-spacing: 4px;
+  text-decoration: none;
+  font-size: 24px;
+  overflow: hidden;
+  transition: 0.2s;
+}
+
+.home .hero .action .action-button:hover{
+  color: #fff;
+  background-color: #3eaf7c;
+  box-shadow: 0 0 10px #3eaf7c, 0 0 40px #3eaf7c, 0 0 80px #3eaf7c;
+  transition-delay: 1s;
+}
+
+.action-button span{
+  position: absolute;
+  display: block;
+}
+
+/* 上边框 */
+.action-button span:nth-child(1){
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #3eaf7c);
+}
+
+.home .hero .action .action-button:hover span:nth-child(1){
+  left: 100%;
+  transition: 1s;
+}
+
+/* 右边框 */
+.action-button span:nth-child(2){
+  top: -100%;
+  right: 0;
+  width: 2px;
+  height: 100%;
+  background: linear-gradient(360deg, transparent, #3eaf7c);
+}
+
+.home .hero .action .action-button:hover span:nth-child(2){
+  top: 100%;
+  transition: 1s;
+  transition-delay: 0.25s;
+}
+
+/* 下边框 */
+.action-button span:nth-child(3){
+  bottom: 0;
+  right: -100%;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(270deg, transparent, #3eaf7c);
+}
+
+.home .hero .action .action-button:hover span:nth-child(3){
+  right: 100%;
+  transition: 1s;
+  transition-delay: 0.5s;
+}
+
+/* 左边框 */
+.action-button span:nth-child(4){
+  bottom: -100%;
+  left: 0;
+  width: 2px;
+  height: 100%;
+  background: linear-gradient(180deg, transparent, #3eaf7c);
+}
+
+.home .hero .action .action-button:hover span:nth-child(4){
+  bottom: 100%;
+  transition: 1s;
+  transition-delay: 0.75s;
+}

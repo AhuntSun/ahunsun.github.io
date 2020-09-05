@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>11.JavaScript实现排序算法 | AhuntSun</title>
+    <meta name="generator" content="VuePress 1.5.2">
+    <link rel="icon" href="https://blog-static.cnblogs.com/files/AhuntSun-blog/sun1.ico">
+    <link rel="stylesheet" href="/css/style.css">
+    <script charset="utf-8" src="/js/main.js"></script>
+    <meta name="description" content="🌕今日事,今日毕🌕">
+    <meta name="keywords" content="AhuntSun, vuepress博客, 学习, 分享">
+    <meta name="author" content="AhuntSun">
+    <link rel="preload" href="/assets/css/0.styles.265dc05e.css" as="style"><link rel="preload" href="/assets/js/app.b0601913.js" as="script"><link rel="preload" href="/assets/js/2.39079bb7.js" as="script"><link rel="preload" href="/assets/js/13.d2399a3d.js" as="script"><link rel="prefetch" href="/assets/js/10.45ee0c2b.js"><link rel="prefetch" href="/assets/js/100.7e91dc57.js"><link rel="prefetch" href="/assets/js/101.9a53727b.js"><link rel="prefetch" href="/assets/js/102.9dbd6f0c.js"><link rel="prefetch" href="/assets/js/103.2ec33f96.js"><link rel="prefetch" href="/assets/js/104.8049d58f.js"><link rel="prefetch" href="/assets/js/105.20a79a3b.js"><link rel="prefetch" href="/assets/js/106.aa72465a.js"><link rel="prefetch" href="/assets/js/107.da121343.js"><link rel="prefetch" href="/assets/js/108.2d09a256.js"><link rel="prefetch" href="/assets/js/109.e61745b8.js"><link rel="prefetch" href="/assets/js/11.b407ef49.js"><link rel="prefetch" href="/assets/js/110.fad61cfc.js"><link rel="prefetch" href="/assets/js/111.0255f8ec.js"><link rel="prefetch" href="/assets/js/112.948bcd68.js"><link rel="prefetch" href="/assets/js/113.cf4371d7.js"><link rel="prefetch" href="/assets/js/114.dc6fe7d3.js"><link rel="prefetch" href="/assets/js/115.eb78c3dc.js"><link rel="prefetch" href="/assets/js/116.fb3c3440.js"><link rel="prefetch" href="/assets/js/117.c2b586ca.js"><link rel="prefetch" href="/assets/js/118.da53e4f9.js"><link rel="prefetch" href="/assets/js/119.9c25f9fc.js"><link rel="prefetch" href="/assets/js/12.11166a53.js"><link rel="prefetch" href="/assets/js/120.1d80f245.js"><link rel="prefetch" href="/assets/js/121.68bd7c29.js"><link rel="prefetch" href="/assets/js/122.fdc0a447.js"><link rel="prefetch" href="/assets/js/123.364ac2a8.js"><link rel="prefetch" href="/assets/js/124.dc2bed8e.js"><link rel="prefetch" href="/assets/js/125.bd9294cb.js"><link rel="prefetch" href="/assets/js/126.d402a939.js"><link rel="prefetch" href="/assets/js/127.d379f310.js"><link rel="prefetch" href="/assets/js/128.c84966a5.js"><link rel="prefetch" href="/assets/js/129.659379d0.js"><link rel="prefetch" href="/assets/js/130.35e6b6a2.js"><link rel="prefetch" href="/assets/js/14.8caa2a1e.js"><link rel="prefetch" href="/assets/js/15.f2adb21d.js"><link rel="prefetch" href="/assets/js/16.6f261a0c.js"><link rel="prefetch" href="/assets/js/17.685c565e.js"><link rel="prefetch" href="/assets/js/18.41530140.js"><link rel="prefetch" href="/assets/js/19.c0492364.js"><link rel="prefetch" href="/assets/js/20.76a6a882.js"><link rel="prefetch" href="/assets/js/21.5c400fc2.js"><link rel="prefetch" href="/assets/js/22.97329f20.js"><link rel="prefetch" href="/assets/js/23.637ef9cc.js"><link rel="prefetch" href="/assets/js/24.8867221e.js"><link rel="prefetch" href="/assets/js/25.b97cf86f.js"><link rel="prefetch" href="/assets/js/26.74761763.js"><link rel="prefetch" href="/assets/js/27.855ba5a1.js"><link rel="prefetch" href="/assets/js/28.77addf61.js"><link rel="prefetch" href="/assets/js/29.52d13e9e.js"><link rel="prefetch" href="/assets/js/3.1842561f.js"><link rel="prefetch" href="/assets/js/30.6b3c337e.js"><link rel="prefetch" href="/assets/js/31.39536375.js"><link rel="prefetch" href="/assets/js/32.33b12180.js"><link rel="prefetch" href="/assets/js/33.a6124111.js"><link rel="prefetch" href="/assets/js/34.996b9142.js"><link rel="prefetch" href="/assets/js/35.e33cad94.js"><link rel="prefetch" href="/assets/js/36.4f4c031f.js"><link rel="prefetch" href="/assets/js/37.421a7a69.js"><link rel="prefetch" href="/assets/js/38.048d7d4c.js"><link rel="prefetch" href="/assets/js/39.68e2eb05.js"><link rel="prefetch" href="/assets/js/4.e00be33d.js"><link rel="prefetch" href="/assets/js/40.d5dbd643.js"><link rel="prefetch" href="/assets/js/41.c62088ec.js"><link rel="prefetch" href="/assets/js/42.593b19e9.js"><link rel="prefetch" href="/assets/js/43.c4c7b7dd.js"><link rel="prefetch" href="/assets/js/44.1805103a.js"><link rel="prefetch" href="/assets/js/45.ca4c060a.js"><link rel="prefetch" href="/assets/js/46.06724024.js"><link rel="prefetch" href="/assets/js/47.fb3fde17.js"><link rel="prefetch" href="/assets/js/48.4f9b0737.js"><link rel="prefetch" href="/assets/js/49.9c388022.js"><link rel="prefetch" href="/assets/js/5.241d7fcd.js"><link rel="prefetch" href="/assets/js/50.06a0b9c5.js"><link rel="prefetch" href="/assets/js/51.6e40e565.js"><link rel="prefetch" href="/assets/js/52.4a8dde8c.js"><link rel="prefetch" href="/assets/js/53.b9f38421.js"><link rel="prefetch" href="/assets/js/54.4c25996d.js"><link rel="prefetch" href="/assets/js/55.cb79df0a.js"><link rel="prefetch" href="/assets/js/56.b5a0144a.js"><link rel="prefetch" href="/assets/js/57.356f4d81.js"><link rel="prefetch" href="/assets/js/58.9f0a3b3a.js"><link rel="prefetch" href="/assets/js/59.dbfd24e4.js"><link rel="prefetch" href="/assets/js/6.8525e477.js"><link rel="prefetch" href="/assets/js/60.28ccf65f.js"><link rel="prefetch" href="/assets/js/61.6ac05c36.js"><link rel="prefetch" href="/assets/js/62.1421efab.js"><link rel="prefetch" href="/assets/js/63.31644a5d.js"><link rel="prefetch" href="/assets/js/64.f68da1e0.js"><link rel="prefetch" href="/assets/js/65.b24f5397.js"><link rel="prefetch" href="/assets/js/66.49f9e37a.js"><link rel="prefetch" href="/assets/js/67.53f37240.js"><link rel="prefetch" href="/assets/js/68.7ea9b5e6.js"><link rel="prefetch" href="/assets/js/69.1d826a0d.js"><link rel="prefetch" href="/assets/js/7.2f68934b.js"><link rel="prefetch" href="/assets/js/70.70e253a1.js"><link rel="prefetch" href="/assets/js/71.59822167.js"><link rel="prefetch" href="/assets/js/72.08ca9d22.js"><link rel="prefetch" href="/assets/js/73.7d3c99dd.js"><link rel="prefetch" href="/assets/js/74.f6c27178.js"><link rel="prefetch" href="/assets/js/75.c1680a86.js"><link rel="prefetch" href="/assets/js/76.afb1d474.js"><link rel="prefetch" href="/assets/js/77.067a9cbe.js"><link rel="prefetch" href="/assets/js/78.9589bc9b.js"><link rel="prefetch" href="/assets/js/79.febdf489.js"><link rel="prefetch" href="/assets/js/8.4dc4cb23.js"><link rel="prefetch" href="/assets/js/80.15b95dc8.js"><link rel="prefetch" href="/assets/js/81.2f7360a3.js"><link rel="prefetch" href="/assets/js/82.7f97813d.js"><link rel="prefetch" href="/assets/js/83.3cfc5e9a.js"><link rel="prefetch" href="/assets/js/84.4644cb16.js"><link rel="prefetch" href="/assets/js/85.26be6e22.js"><link rel="prefetch" href="/assets/js/86.df7150ac.js"><link rel="prefetch" href="/assets/js/87.f58ffe38.js"><link rel="prefetch" href="/assets/js/88.5030c5ad.js"><link rel="prefetch" href="/assets/js/89.9344635c.js"><link rel="prefetch" href="/assets/js/9.23c2dab8.js"><link rel="prefetch" href="/assets/js/90.5fef54bf.js"><link rel="prefetch" href="/assets/js/91.456bbb97.js"><link rel="prefetch" href="/assets/js/92.0ff05e99.js"><link rel="prefetch" href="/assets/js/93.41e0fdea.js"><link rel="prefetch" href="/assets/js/94.7c636190.js"><link rel="prefetch" href="/assets/js/95.f263867e.js"><link rel="prefetch" href="/assets/js/96.ce0f8277.js"><link rel="prefetch" href="/assets/js/97.de49c6b0.js"><link rel="prefetch" href="/assets/js/98.42595a72.js"><link rel="prefetch" href="/assets/js/99.da91ad4c.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.265dc05e.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><!----> <span class="site-name">AhuntSun</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/navitem/git/" class="nav-link">
+  Git应用详解
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="数据结构与算法" class="dropdown-title"><span class="title">数据结构与算法</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>
+          理论篇
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/navitem/algorithm/theory/" class="nav-link router-link-active">
+  JavaScript版基础知识
+</a></li></ul></li><li class="dropdown-item"><h4>
+          实战篇
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/navitem/algorithm/example/2offer/" class="nav-link">
+  剑指offer
+</a></li><li class="dropdown-subitem"><a href="/navitem/algorithm/example/leecode/" class="nav-link">
+  leecode精选
+</a></li></ul></li></ul></div></div><div class="nav-item"><a href="/navitem/article/" class="nav-link">
+  好文转载
+</a></div><div class="nav-item"><a href="/navitem/essay/" class="nav-link">
+  随笔整合
+</a></div><div class="nav-item"><a href="/navitem/demo/" class="nav-link">
+  实战Demo
+</a></div><div class="nav-item"><a href="/navitem/esun/" class="nav-link">
+  eSun-UI
+</a></div><div class="nav-item"><a href="/navitem/tech/FE-interview/" class="nav-link">
+  面试宝典
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="工具箱" class="dropdown-title"><span class="title">工具箱</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>
+          在线编辑
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="https://tinypng.com/" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  图片压缩
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></li></ul></li><li class="dropdown-item"><h4>
+          在线服务
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="https://developer.mozilla.org/zh-CN/" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  MDN
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></li><li class="dropdown-subitem"><a href="https://cubic-bezier.com/" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  贝塞尔曲线
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></li><li class="dropdown-subitem"><a href="https://easings.net/en" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  加速度曲线速查
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="实用网站" class="dropdown-title"><span class="title">实用网站</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/navitem/website/1/" class="nav-link">
+  图片编辑
+</a></li><li class="dropdown-item"><!----> <a href="/navitem/website/2/" class="nav-link">
+  样式设计
+</a></li><li class="dropdown-item"><!----> <a href="/navitem/website/3/" class="nav-link">
+  论坛网站
+</a></li><li class="dropdown-item"><!----> <a href="/navitem/website/4/" class="nav-link">
+  在线学习
+</a></li><li class="dropdown-item"><!----> <a href="/navitem/website/5/" class="nav-link">
+  创新社区
+</a></li><li class="dropdown-item"><!----> <a href="/navitem/website/6/" class="nav-link">
+  优质图库
+</a></li><li class="dropdown-item"><!----> <a href="/navitem/website/7/" class="nav-link">
+  UI设计
+</a></li><li class="dropdown-item"><!----> <a href="/navitem/website/8/" class="nav-link">
+  工具网站
+</a></li><li class="dropdown-item"><!----> <a href="/navitem/website/9/" class="nav-link">
+  JavaScript库
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="联系我" class="dropdown-title"><span class="title">联系我</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="https://www.cnblogs.com/AhuntSun-blog/" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  博客园
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></li><li class="dropdown-item"><!----> <a href="https://blog.csdn.net/qq_43425487" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  CSDN
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></li><li class="dropdown-item"><!----> <a href="https://juejin.im/user/5dea331b518825123e7ae8d4" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  掘金
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></li><li class="dropdown-item"><!----> <a href="https://github.com/AhuntSun" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  Github
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></li><li class="dropdown-item"><!----> <a href="https://gitee.com/ahuntsun" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  Gitee
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></li></ul></div></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/navitem/git/" class="nav-link">
+  Git应用详解
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="数据结构与算法" class="dropdown-title"><span class="title">数据结构与算法</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>
+          理论篇
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/navitem/algorithm/theory/" class="nav-link router-link-active">
+  JavaScript版基础知识
+</a></li></ul></li><li class="dropdown-item"><h4>
+          实战篇
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/navitem/algorithm/example/2offer/" class="nav-link">
+  剑指offer
+</a></li><li class="dropdown-subitem"><a href="/navitem/algorithm/example/leecode/" class="nav-link">
+  leecode精选
+</a></li></ul></li></ul></div></div><div class="nav-item"><a href="/navitem/article/" class="nav-link">
+  好文转载
+</a></div><div class="nav-item"><a href="/navitem/essay/" class="nav-link">
+  随笔整合
+</a></div><div class="nav-item"><a href="/navitem/demo/" class="nav-link">
+  实战Demo
+</a></div><div class="nav-item"><a href="/navitem/esun/" class="nav-link">
+  eSun-UI
+</a></div><div class="nav-item"><a href="/navitem/tech/FE-interview/" class="nav-link">
+  面试宝典
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="工具箱" class="dropdown-title"><span class="title">工具箱</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>
+          在线编辑
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="https://tinypng.com/" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  图片压缩
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></li></ul></li><li class="dropdown-item"><h4>
+          在线服务
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="https://developer.mozilla.org/zh-CN/" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  MDN
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></li><li class="dropdown-subitem"><a href="https://cubic-bezier.com/" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  贝塞尔曲线
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></li><li class="dropdown-subitem"><a href="https://easings.net/en" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  加速度曲线速查
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="实用网站" class="dropdown-title"><span class="title">实用网站</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/navitem/website/1/" class="nav-link">
+  图片编辑
+</a></li><li class="dropdown-item"><!----> <a href="/navitem/website/2/" class="nav-link">
+  样式设计
+</a></li><li class="dropdown-item"><!----> <a href="/navitem/website/3/" class="nav-link">
+  论坛网站
+</a></li><li class="dropdown-item"><!----> <a href="/navitem/website/4/" class="nav-link">
+  在线学习
+</a></li><li class="dropdown-item"><!----> <a href="/navitem/website/5/" class="nav-link">
+  创新社区
+</a></li><li class="dropdown-item"><!----> <a href="/navitem/website/6/" class="nav-link">
+  优质图库
+</a></li><li class="dropdown-item"><!----> <a href="/navitem/website/7/" class="nav-link">
+  UI设计
+</a></li><li class="dropdown-item"><!----> <a href="/navitem/website/8/" class="nav-link">
+  工具网站
+</a></li><li class="dropdown-item"><!----> <a href="/navitem/website/9/" class="nav-link">
+  JavaScript库
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="联系我" class="dropdown-title"><span class="title">联系我</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="https://www.cnblogs.com/AhuntSun-blog/" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  博客园
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></li><li class="dropdown-item"><!----> <a href="https://blog.csdn.net/qq_43425487" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  CSDN
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></li><li class="dropdown-item"><!----> <a href="https://juejin.im/user/5dea331b518825123e7ae8d4" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  掘金
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></li><li class="dropdown-item"><!----> <a href="https://github.com/AhuntSun" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  Github
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></li><li class="dropdown-item"><!----> <a href="https://gitee.com/ahuntsun" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  Gitee
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></li></ul></div></div> <!----></nav>  <ul class="sidebar-links"><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading open"><span>JavaScript版数据结构与算法之基础知识</span> <span class="arrow down"></span></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/navitem/algorithm/theory/notes/1.html" class="sidebar-link">01.JavaScript实现栈结构（Stack）</a></li><li><a href="/navitem/algorithm/theory/notes/2.html" class="sidebar-link">02.JavaScript实现队列结构（Queue）</a></li><li><a href="/navitem/algorithm/theory/notes/3.html" class="sidebar-link">03.JavaScript实现单向链表</a></li><li><a href="/navitem/algorithm/theory/notes/4.html" class="sidebar-link">04.JavaScript实现双向链表</a></li><li><a href="/navitem/algorithm/theory/notes/5.html" class="sidebar-link">05.JavaScript实现集合与字典</a></li><li><a href="/navitem/algorithm/theory/notes/6.html" class="sidebar-link">06.JavaScript实现哈希表</a></li><li><a href="/navitem/algorithm/theory/notes/7.html" class="sidebar-link">07.JavaScript实现图结构</a></li><li><a href="/navitem/algorithm/theory/notes/8.html" class="sidebar-link">08.JavaScript实现树结构（一）</a></li><li><a href="/navitem/algorithm/theory/notes/9.html" class="sidebar-link">09.JavaScript实现树结构（二）</a></li><li><a href="/navitem/algorithm/theory/notes/10.html" class="sidebar-link">10.图解红黑树</a></li><li><a href="/navitem/algorithm/theory/notes/11.html" aria-current="page" class="active sidebar-link">11.JavaScript实现排序算法</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/navitem/algorithm/theory/notes/11.html#一、大o表示法" class="sidebar-link">一、大O表示法</a></li><li class="sidebar-sub-header"><a href="/navitem/algorithm/theory/notes/11.html#二、排序算法" class="sidebar-link">二、排序算法</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/navitem/algorithm/theory/notes/11.html#_1-冒泡排序" class="sidebar-link">1.冒泡排序</a></li><li class="sidebar-sub-header"><a href="/navitem/algorithm/theory/notes/11.html#_2-选择排序" class="sidebar-link">2.选择排序</a></li><li class="sidebar-sub-header"><a href="/navitem/algorithm/theory/notes/11.html#_3-插入排序" class="sidebar-link">3.插入排序</a></li><li class="sidebar-sub-header"><a href="/navitem/algorithm/theory/notes/11.html#_4-希尔排序" class="sidebar-link">4.希尔排序</a></li><li class="sidebar-sub-header"><a href="/navitem/algorithm/theory/notes/11.html#_5-快速排序" class="sidebar-link">5.快速排序</a></li></ul></li></ul></li></ul></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="_11-javascript实现排序算法"><a href="#_11-javascript实现排序算法" class="header-anchor">#</a> 11.JavaScript实现排序算法</h1> <h2 id="一、大o表示法"><a href="#一、大o表示法" class="header-anchor">#</a> 一、大O表示法</h2> <p><strong>大O表示法：</strong></p> <ul><li>在计算机中采用<strong>粗略的度量</strong>来描述计算机算法的<strong>效率</strong>，这种方法被称为**“大O”表示法**</li> <li>在<strong>数据项个数</strong>发生改变时，<strong>算法的效率</strong>也会跟着改变。所以说算法A比算法B快两倍，这样的比较是<strong>没有意义</strong>的。</li> <li>因此我们通常使用<strong>算法的速度</strong>随着<strong>数据量的变化</strong>会如何变化的方式来表示算法的效率，大O表示法就是方式之一。</li></ul> <p><strong>常见的大O表示形式</strong></p> <table><thead><tr><th>符号</th> <th>名称</th></tr></thead> <tbody><tr><td>O（1）</td> <td>常数</td></tr> <tr><td>O（log(n)）</td> <td>对数</td></tr> <tr><td>O（n）</td> <td>线性</td></tr> <tr><td>O（nlog(n)）</td> <td>线性和对数乘积</td></tr> <tr><td>O（n²）</td> <td>平方</td></tr> <tr><td>O（2^n^）</td> <td>指数</td></tr></tbody></table> <p><strong>不同大O形式的时间复杂度：</strong></p> <p><img src="https://gitee.com/ahuntsun/BlogImgs/raw/master/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/1.png" alt="image-20200304164951223"></p> <p>可以看到效率从大到小分别是：O（1）&gt; O（logn）&gt; O（n）&gt; O（nlog(n)）&gt; O（n²）&gt; O（2^n^）</p> <p><strong>推导大O表示法的三条规则：</strong></p> <ul><li><strong>规则一</strong>：用常量1取代运行时间中所有的加法常量。如7 + 8 = 15，用1表示运算结果15，大O表示法表示为O（1）；</li> <li><strong>规则二</strong>：运算中只保留最高阶项。如N^3 + 3n +1，大O表示法表示为：O（N^3^）;</li> <li><strong>规则三</strong>：若最高阶项的常数不为1，可将其省略。如4N^2^，大O表示法表示为：O（N^2^）;</li></ul> <h2 id="二、排序算法"><a href="#二、排序算法" class="header-anchor">#</a> 二、排序算法</h2> <p>这里主要介绍几种简单排序和高级排序：</p> <ul><li>**简单排序：**冒泡排序、选择排序、插入排序；</li> <li>**高级排序：**希尔排序、快速排序；</li></ul> <p>此处创建一个列表类ArrayList并添加一些属性和方法，用于存放这些排序方法：</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>    //创建列表类
+    function ArrayList() {
+      //属性
+      this.array = []
+
+      //方法
+      //封装将数据插入到数组中方法
+      ArrayList.prototype.insert = function(item){
+        this.array.push(item)
+      }
+
+      //toString方法
+      ArrayList.prototype.toString = function(){
+        return this.array.join('-')
+      }
+
+      //交换两个位置的数据
+      ArrayList.prototype.swap = function(m, n){
+        let temp  = this.array[m]
+        this.array[m] = this.array[n]
+        this.array[n] = temp
+      }
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br></div></div><h3 id="_1-冒泡排序"><a href="#_1-冒泡排序" class="header-anchor">#</a> 1.冒泡排序</h3> <p><strong>冒泡排序的思路：</strong></p> <ul><li>对未排序的各元素<strong>从头到尾</strong>依次比较<strong>相邻的两个元素</strong>大小关系；</li> <li>如果<strong>左边的人员高</strong>，则将两人<strong>交换位置</strong>。比如1比2矮，不交换位置；</li> <li>向<strong>右移动一位</strong>，继续比较2和3，最后比较 length - 1 和 length - 2这两个数据；</li> <li>当到达<strong>最右端</strong>时，<strong>最高的人</strong>一定被放在了<strong>最右边</strong>；</li> <li>按照这个思路，从最左端重新开始时，只需要走到<strong>倒数第二个位置</strong>即可；</li></ul> <p><img src="https://gitee.com/ahuntsun/BlogImgs/raw/master/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/2.png" alt="image-20200304191223265"></p> <p><strong>实现思路：</strong></p> <p>两层循环：</p> <ul><li><p>外层循环控制冒泡趟数：</p> <ul><li>第一次：j = length - 1，比较到倒数第一个位置 ；</li> <li>第二次：j = length - 2，比较到倒数第二个位置 ；</li></ul></li> <li><p>内层循环控制每趟比较的次数：</p> <ul><li>第一次比较： i = 0，比较 0 和 1 位置的两个数据；</li> <li>最后一次比较：i = length - 2,比较length - 2和 length - 1两个数据；</li></ul></li></ul> <p>详细过程如下图所示：</p> <p><img src="https://gitee.com/ahuntsun/BlogImgs/raw/master/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/3.png" alt="image-20200304210611689"></p> <p>动态过程：</p> <p><img src="https://gitee.com/ahuntsun/BlogImgs/raw/master/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/4.gif" alt=""></p> <p><strong>代码实现：</strong></p> <div class="language-//冒泡排序 line-numbers-mode"><pre class="language-text"><code>      //冒泡排序
+      ArrayList.prototype.bubblesor = function(){
+        //1.获取数组的长度
+        let length = this.array.length
+
+        //外层循环控制冒泡趟数
+        for(let j = length - 1; j &gt;= 0; j--){
+          //内层循环控制每趟比较的次数
+          for(let i = 0; i &lt; j; i++){
+          if (this.array[i] &gt; this.array[i+1]) {
+            //交换两个数据
+            let temp  = this.array[i]
+        	this.array[i] = this.array[i+1]
+        	this.array[i+1] = temp
+          }
+        }
+        }
+      }
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br></div></div><p><strong>测试代码：</strong></p> <div class="language- line-numbers-mode"><pre class="language-text"><code>    //测试类
+    let list = new ArrayList()
+
+    //插入元素
+    list.insert(66)
+    list.insert(88)
+    list.insert(12)
+    list.insert(87)
+    list.insert(100)
+    list.insert(5)
+    list.insert(566)
+    list.insert(23)
+    
+    //验证冒泡排序
+    list.bubblesor()
+    console.log(list);
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br></div></div><p><strong>测试结果：</strong> <img src="https://gitee.com/ahuntsun/BlogImgs/raw/master/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/5.png" alt="image-20200304210433388"></p> <p><strong>冒泡排序的效率：</strong></p> <ul><li>上面所讲的对于7个数据项，比较次数为：6 + 5 + 4 + 3 + 2 + 1;</li> <li>对于N个数据项，<strong>比较次数</strong>为：(N - 1) + (N - 2) + (N - 3) + ... + 1 = N * (N - 1) / 2；如果两次比较交换一次，那么<strong>交换次数</strong>为：N * (N - 1) / 4；</li> <li>使用大O表示法表示比较次数和交换次数分别为：O（ N * (N - 1) / 2）和O（ N * (N - 1) / 4），根据大O表示法的三条规则都化简为：<strong>O（N^2）</strong>;</li></ul> <h3 id="_2-选择排序"><a href="#_2-选择排序" class="header-anchor">#</a> 2.选择排序</h3> <p><strong>选择排序改进了冒泡排序：</strong></p> <ul><li>将<strong>交换次数</strong>由<strong>O（N^2）<strong>减小到</strong>O（N）</strong>；</li> <li>但是<strong>比较次数</strong>依然是<strong>O（N^2）</strong>；</li></ul> <p><strong>选择排序的思路：</strong></p> <ul><li>选定<strong>第一个索引的位置</strong>比如1，然后依次和后面的元素<strong>依次进行比较</strong>；</li> <li>如果后面的元素，<strong>小于</strong>索引1位置的元素，则<strong>交换位置</strong>到索引1处；</li> <li>经过一轮的比较之后，可以确定一开始指定的索引1位置的元素是<strong>最小的</strong>；</li> <li>随后使用同样的方法除索引1意外<strong>逐个比较剩下的元素</strong>即可；</li> <li>可以看出选择排序，<strong>第一轮</strong>会选出<strong>最小值</strong>，<strong>第二轮</strong>会选出<strong>第二小的值</strong>，直到完成排序。</li></ul> <p><img src="https://gitee.com/ahuntsun/BlogImgs/raw/master/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/6.png" alt="image-20200304213253241"></p> <p><strong>实现思路：</strong></p> <p>两层循环：</p> <ul><li><p>外层循环控制指定的索引：</p> <ul><li>第一次：j = 0，指定第一个元素 ；</li> <li>最后一次：j = length - 1，指定最后一个元素 ；</li></ul></li> <li><p>内层循环负责将指定索引（i）的元素与剩下（i - 1）的元素进行比较；</p></li></ul> <p>动态过程：</p> <p><img src="https://gitee.com/ahuntsun/BlogImgs/raw/master/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/7.gif" alt=""></p> <p><strong>代码实现：</strong></p> <div class="language- line-numbers-mode"><pre class="language-text"><code>      //选择排序
+      ArrayList.prototype.selectionSort = function(){
+        //1.获取数组的长度
+        let length = this.array.length
+
+        //2.外层循环：从0开始获取元素
+        for(let j = 0; j &lt; length - 1; j++){
+          let min = j
+          //内层循环：从i+1位置开始，和后面的元素进行比较
+        for(let i = min + 1; i &lt; length; i++){
+          if (this.array[min] &gt; this.array[i]) {
+            min = i
+          }
+        }
+        this.swap(min, j)
+        }
+      }
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br></div></div><p><strong>测试代码：</strong></p> <div class="language- line-numbers-mode"><pre class="language-text"><code>    //测试类
+    let list = new ArrayList()
+
+    //插入元素
+    list.insert(66)
+    list.insert(88)
+    list.insert(12)
+    list.insert(87)
+    list.insert(100)
+    list.insert(5)
+    list.insert(566)
+    list.insert(23)
+    
+    //验证选择排序
+    list.selectionSort()
+    console.log(list);
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br></div></div><p><strong>测试结果：</strong></p> <p><img src="https://gitee.com/ahuntsun/BlogImgs/raw/master/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/8.png" alt="image-20200304222224801"></p> <p><strong>选择排序的效率：</strong></p> <ul><li>选择排序的<strong>比较次数</strong>为：N * (N - 1) / 2，用大O表示法表示为：<strong>O（N^2）</strong>;</li> <li>选择排序的<strong>交换次数</strong>为：(N - 1) / 2，用大O表示法表示为：<strong>O（N）</strong>;</li> <li>所以选择排序的效率高于冒泡排序；</li></ul> <h3 id="_3-插入排序"><a href="#_3-插入排序" class="header-anchor">#</a> 3.插入排序</h3> <p>插入排序是简单排序中效率<strong>最高</strong>的一种排序。</p> <p><strong>插入排序的思路：</strong></p> <ul><li>插入排序思想的核心是<strong>局部有序</strong>。如图所示，X左边的人称为<strong>局部有序</strong>；</li> <li>首先指定一数据X（从第一个数据开始），并将数据X的左边变成局部有序状态；</li> <li>随后将X右移一位，再次达到局部有序之后，继续右移一位，重复前面的操作直至X移至最后一个元素。</li></ul> <p><img src="https://gitee.com/ahuntsun/BlogImgs/raw/master/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/9.png" alt="image-20200304231400959"></p> <p>插入排序的详细过程：</p> <p><img src="https://gitee.com/ahuntsun/BlogImgs/raw/master/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/10.png" alt="image-20200304231643777"></p> <p>动态过程：</p> <p><img src="https://gitee.com/ahuntsun/BlogImgs/raw/master/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/11.gif" alt=""></p> <p><strong>代码实现：</strong></p> <div class="language- line-numbers-mode"><pre class="language-text"><code>      //插入排序
+      ArrayList.prototype.insertionSort = function(){
+        //1.获取数组的长度
+        let length = this.array.length
+
+        //2.外层循环:从第二个数据开始，向左边的已经局部有序数据进行插入
+        for(let i = 1; i &lt; length; i++){
+          //3.内层循环：获取i位置的元素，使用while循环(重点)与左边的局部有序数据依次进行比较
+          let temp = this.array[i]
+          let j = i
+          while(this.array[j - 1] &gt; temp &amp;&amp; j &gt; 0){
+            this.array[j] = this.array[j - 1]//大的数据右移
+            j--
+          }
+          //4.while循环结束后，index = j左边的数据变为局部有序且array[j]最大。此时将array[j]重置为排序前的数据array[i]，方便下一次for循环
+          this.array[j] = temp
+        }
+      }
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br></div></div><p><strong>测试代码：</strong></p> <div class="language- line-numbers-mode"><pre class="language-text"><code>   //测试类
+    let list = new ArrayList()
+
+    //插入元素
+    list.insert(66)
+    list.insert(88)
+    list.insert(12)
+    list.insert(87)
+    list.insert(100)
+    list.insert(5)
+    list.insert(566)
+    list.insert(23)
+    // console.log(list);
+
+    //验证插入排序
+    list.insertionSort()
+    console.log(list);
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br></div></div><p><strong>测试结果：</strong></p> <p><img src="https://gitee.com/ahuntsun/BlogImgs/raw/master/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/12.png" alt="image-20200304235529516"></p> <p><strong>插入排序的效率：</strong></p> <ul><li><p>**比较次数：**第一趟时，需要的最大次数为1；第二次最大为2；以此类推，最后一趟最大为N-1；所以，插入排序的总比较次数为N * (N - 1) / 2；但是，实际上每趟发现插入点之前，平均只有全体数据项的一半需要进行比较，所以比较次数为：<strong>N * (N - 1) / 4</strong>；</p></li> <li><p><strong>交换次数：<strong>指定第一个数据为X时交换0次，指定第二个数据为X最多需要交换1次，以此类推，指定第N个数据为X时最多需要交换N - 1次，所以一共需要交换N * (N - 1) / 2次，平局次数为</strong>N * (N - 1) / 2</strong>；</p></li> <li><p>虽然用大O表示法表示插入排序的效率也是<strong>O（N^2）</strong>，但是插入排序整体操作次数更少，因此，在简单排序中，插入排序<strong>效率最高</strong>；</p></li></ul> <h3 id="_4-希尔排序"><a href="#_4-希尔排序" class="header-anchor">#</a> 4.希尔排序</h3> <p><strong>希尔排序</strong>是<strong>插入排序</strong>的一种高效的<strong>改进版</strong>，效率比插入排序要<strong>高</strong>。</p> <p><strong>希尔排序的历史背景：</strong></p> <ul><li>希尔排序按其设计者希尔（Donald Shell）的名字命名，该算法由<strong>1959年公布</strong>；</li> <li>希尔算法首次突破了计算机界一直认为的**算法的时间复杂度都是O（N^2）**的大关，为了纪念该算法里程碑式</li></ul> <p>的意义，用<strong>Shell</strong>来命名该算法；</p> <p><strong>插入排序的问题：</strong></p> <ul><li>假设一个<strong>很小的数据项</strong>在<strong>很靠近右端的位置</strong>上，这里本应该是<strong>较大的数据项的位置</strong>；</li> <li>将这个<strong>小数据项移动到左边</strong>的正确位置，所有的<strong>中间数据项都必须向右移动一位</strong>，这样效率非常低；</li> <li>如果通过<strong>某种方式</strong>，不需要<strong>一个个移动所有中间的数据项</strong>，就能把较小的数据项移到左边，那么这个算法的执行速度就会有很大的改进。</li></ul> <p><strong>希尔排序的实现思路：</strong></p> <ul><li>希尔排序主要通过对数据进行<strong>分组</strong>实现快速排序；</li> <li>根据设定的增量（gap）将数据分为gap个组（<strong>组数等于gap</strong>），再在每个分组中进行局部排序；</li></ul> <blockquote><p>假如有数组有10个数据，第1个数据为黑色，增量为5。那么第二个为黑色的数据index=5，第3个数据为黑色的数据index = 10（不存在）。所以黑色的数据每组只有2个，10 / 2 = 5一共可分5组，即<strong>组数等于增量gap</strong>。</p></blockquote> <ul><li>排序之后，减小增量，继续分组，再次进行局部排序，直到增量gap=1为止。随后只需进行微调就可完成数组的排序；</li></ul> <p>具体过程如下：</p> <ul><li>排序之前的，储存10个数据的原始数组为：</li></ul> <p><img src="https://gitee.com/ahuntsun/BlogImgs/raw/master/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/13.png" alt="image-20200305102330304"></p> <ul><li>设初始增量gap = length / 2 = 5，即数组被分为了5组，如图所示分别为：[8, 3]、[9, 5]、[1, 4]、[7, 6]、[2, 0]：</li></ul> <p><img src="https://gitee.com/ahuntsun/BlogImgs/raw/master/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/14.png" alt="image-20200305104914438"></p> <ul><li>随后分别在每组中对数据进行局部排序，5组的顺序如图所示，变为：[3, 8]、[5, 9]、[1, 4]、[6, 7]、[0, 2]：</li></ul> <p><img src="https://gitee.com/ahuntsun/BlogImgs/raw/master/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/15.png" alt="image-20200305103136251"></p> <ul><li>然后缩小增量gap = 5 / 2 = 2，即数组被分为了2组，如图所示分别为：[3，1，0，9，7]、[5，6，8，4，2]：</li></ul> <p><img src="https://gitee.com/ahuntsun/BlogImgs/raw/master/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/16.png" alt="image-20200305104933858"></p> <ul><li>随后分别在每组中对数据进行局部排序，两组的顺序如图所示，变为：[0，1，3，7，9]、[2，4，5，6，8]：</li></ul> <p><img src="https://gitee.com/ahuntsun/BlogImgs/raw/master/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/17.png" alt="image-20200305103815262"></p> <ul><li>然后然后缩小增量gap = 2 / 1 = 1，即数组被分为了1组，如图所示为：[0，2，1，4，3，5，7，6，9，8]：</li></ul> <p><img src="https://gitee.com/ahuntsun/BlogImgs/raw/master/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/18.png" alt="image-20200305104847458"></p> <ul><li>最后只需要对该组数据进行插入排序即可完成整个数组的排序：</li></ul> <p><img src="https://gitee.com/ahuntsun/BlogImgs/raw/master/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/19.png" alt="image-20200305104707789"></p> <p>动态过程：</p> <p><img src="https://gitee.com/ahuntsun/BlogImgs/raw/master/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/20.gif" alt=""></p> <p>图中d表示增量gap。</p> <p><strong>增量的选择：</strong></p> <ul><li><strong>原稿</strong>中希尔建议的初始间距为<strong>N / 2</strong>，比如对于N = 100的数组，增量序列为：50，25，12，6，3，1，可以发现不能整除时向下取整。</li> <li><strong>Hibbard增量序列：<strong>增量序列算法为：2^k - 1，即1，3，5，7... ...等；这种情况的最坏复杂度为</strong>O（N^3/2）</strong>,平均复杂度为**O（N^5/4）**但未被证明；</li> <li><strong>Sedgewcik增量序列：</strong></li></ul> <p><img src="https://gitee.com/ahuntsun/BlogImgs/raw/master/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/21.png" alt="image-20200305110724309"></p> <p>以下代码实现中采用希尔排序原稿中建议的增量即<strong>N / 2</strong> 。</p> <p><strong>代码实现：</strong></p> <div class="language- line-numbers-mode"><pre class="language-text"><code>      //希尔排序
+      ArrayList.prototype.shellSort = function(){
+        //1.获取数组的长度
+        let length = this.array.length
+
+        //2.初始化增量
+        let gap = Math.floor(length / 2)
+
+        //3.第一层循环：while循环(使gap不断减小)
+        while(gap &gt;= 1 ){
+          //4.第二层循环：以gap为增量，进行分组，对分组进行插入排序
+          //重点为：将index = gap作为选中的第一个数据
+          for(let i = gap; i &lt; length; i++){
+            let temp = this.array[i]
+            let j = i
+            //5.第三层循环:寻找正确的插入位置
+            while(this.array[j - gap] &gt; temp &amp;&amp; j &gt; gap - 1){
+              this.array[j] = this.array[j - gap]
+              j -= gap
+            }
+          //6.将j位置的元素设置为temp
+          this.array[j] = temp
+          }
+
+          gap = Math.floor(gap / 2)
+        }
+      }
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br></div></div><p>这里解释一下上述代码中的三层循环：</p> <ul><li>**第一层循环：**while循环，控制gap递减到1；</li> <li>**第二层循环：**分别取出根据g增量gap分成的gap组数据：将index = gap的数据作为选中的第一个数据，如下图所示，gap=5，则index = gap的数据为3，index = gap - 1的数据为8，两个数据为一组。随后gap不断加1右移，直到gap &lt; length，此时实现了将数组分为5组。</li></ul> <p><img src="https://gitee.com/ahuntsun/BlogImgs/raw/master/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/21.5.png" alt="image-20200305104914438"></p> <ul><li>**第三层循环：**对每一组数据进行插入排序；</li></ul> <p><strong>测试代码：</strong></p> <div class="language- line-numbers-mode"><pre class="language-text"><code>   //测试类
+    let list = new ArrayList()
+
+    //插入元素
+    list.insert(66)
+    list.insert(88)
+    list.insert(12)
+    list.insert(87)
+    list.insert(100)
+    list.insert(5)
+    list.insert(566)
+    list.insert(23)
+    // console.log(list);
+
+    //验证希尔排序
+    list.shellSort()
+    console.log(list);
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br></div></div><p><strong>测试结果：</strong></p> <p><img src="https://gitee.com/ahuntsun/BlogImgs/raw/master/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/22.png" alt="image-20200305114934209"></p> <p><strong>希尔排序的效率：</strong></p> <ul><li>希尔排序的效率和增量有直接关系，即使使用原稿中的增量效率都高于简单排序。</li></ul> <h3 id="_5-快速排序"><a href="#_5-快速排序" class="header-anchor">#</a> 5.快速排序</h3> <p>快速排序的介绍：</p> <ul><li><p><strong>快速排序</strong>可以说是<strong>目前所有排序算法</strong>中，<strong>最快</strong>的一种排序算法。当然，没有任何一种算法是在任意情况下都是最优的。但是，大多数情况下快速排序是比较好的选择。</p></li> <li><p><strong>快速排序</strong>其实是<strong>冒泡排序</strong>的升级版；</p></li></ul> <p>快速排序的核心思想是<strong>分而治之</strong>，先选出一个数据（比如65），将比其小的数据都放在它的左边，将比它大的数据都放在它的右边。这个数据称为<strong>枢纽</strong></p> <p>和冒泡排序的不同：</p> <ul><li>我们选择的65可以一次性将它放在最正确的位置，之后就不需要做任何移动；</li> <li>而冒泡排序即使已经找到最大值，也需要继续移动最大值，直到将它移动到最右边；</li></ul> <p><img src="https://gitee.com/ahuntsun/BlogImgs/raw/master/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/23.png" alt="image-20200305154504624"></p> <p><strong>快速排序的枢纽：</strong></p> <ul><li>**第一种方案：**直接选择第一个元素作为枢纽。但是，当第一个元素就是最小值的情况下，效率不高；</li> <li>**第二种方案：**使用随机数。随机数本身十分消耗性能，不推荐；</li> <li><strong>优秀的解决方法：<strong>取index为头、中、位的三个数据排序后的中位数；如下图所示，按下标值取出的三个数据为：92，31，0，经排序后变为：0，31，92，取其中的中位数31作为</strong>枢纽</strong>（当（length-1）/2不整除时可向下或向上取整）：</li></ul> <p><img src="https://gitee.com/ahuntsun/BlogImgs/raw/master/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/24.png" alt="image-20200305182934710"></p> <p><strong>实现枢纽选择：</strong></p> <div class="language- line-numbers-mode"><pre class="language-text"><code>//交换两个位置的数据
+let swap = function(arr, m, n){
+    let temp  = arr[m]
+    arr[m] = arr[n]
+    arr[n] = temp
+}
+
+//快速排序
+//1.选择枢纽
+let median = function(arr){
+  //1.取出中间的位置
+  let center = Math.floor(arr.length / 2)
+  let right = arr.length - 1 
+  let left = 0
+
+  //2.判断大小并进行交换
+  if (arr[left] &gt; arr[center]) {
+    swap(arr, left, center)
+  }
+  if (arr[center] &gt; arr[right]){
+    swap(arr, center, right)
+  }
+  if (arr[left] &gt; arr[right]) {
+    swap(arr, left, right)
+  }
+  //3.返回枢纽
+  return center
+}
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br></div></div><p>数组经过获取枢纽函数操作之后，选出的3个下标值对应的数据位置变为：</p> <p><img src="https://gitee.com/ahuntsun/BlogImgs/raw/master/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/25.png" alt="image-20200320091750654"></p> <p><strong>动态过程：</strong></p> <p><img src="https://gitee.com/ahuntsun/BlogImgs/raw/master/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/26.gif" alt=""></p> <p><strong>快速排序代码实现：</strong></p> <div class="language- line-numbers-mode"><pre class="language-text"><code>//2.快速排序
+let QuickSort = function(arr){
+  if (arr.length == 0) {
+    return []
+  }
+  let center = median(arr)
+  let c = arr.splice(center, 1)
+  let l = []
+  let r = []
+
+  for (let i = 0; i &lt; arr.length; i++) {
+      if (arr[i] &lt; c) {
+        l.push(arr[i])
+      }else{
+        r.push(arr[i])
+      }        
+  }
+  return QuickSort(l).concat(c, QuickSort(r))
+}
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br></div></div><p>算法的巧妙之处在于通过:</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>QuickSort(l).concat(c, QuickSort(r))
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><p>递归调用<code>QuickSort</code>函数实现了枢纽<code>Center</code>左边数据<code>l</code>和右边数据<code>r</code>的排序；</p> <p><strong>测试代码：</strong></p> <div class="language- line-numbers-mode"><pre class="language-text"><code>let arr = [0, 13, 81, 43, 31, 27, 56, 92]
+console.log(QuickSort(arr));
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br></div></div><p><strong>测试结果</strong></p> <p><img src="https://gitee.com/ahuntsun/BlogImgs/raw/master/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/28.png" alt="image-20200320092254048"></p> <p><strong>快速排序的效率：</strong></p> <ul><li>快速排序最坏情况下的效率：每次选择的枢纽都是最左边或最右边的数据，此时效率等同于冒泡排序，时间复杂度为<strong>O（n^2^）</strong>。可根据不同的枢纽选择避免这一情况；</li> <li>快速排序的平均效率：为<strong>O（N*logN）</strong>，虽然其他算法效率也可达到O（N*logN），但是其中快速排序是<strong>最好的</strong>。</li></ul> <blockquote><p>参考资料：<a href="https://www.bilibili.com/video/av86801505?from=search&amp;seid=4967761411915016256" target="_blank" rel="noopener noreferrer">JavaScript数据结构与算法<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></p></blockquote></div> <footer class="page-edit"><!----> <div class="last-updated"><span class="prefix">最后更新于:</span> <span class="time">2020年6月13日星期六晚上7点32分</span></div></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/navitem/algorithm/theory/notes/10.html" class="prev">
+        10.图解红黑树
+      </a></span> <!----></p></div> </main></div><div class="global-ui"><!----></div></div>
+    <script src="/assets/js/app.b0601913.js" defer></script><script src="/assets/js/2.39079bb7.js" defer></script><script src="/assets/js/13.d2399a3d.js" defer></script>
+  </body>
+</html>

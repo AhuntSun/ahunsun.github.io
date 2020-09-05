@@ -1,0 +1,758 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>04.JavaScript实现双向链表 | AhuntSun</title>
+    <meta name="generator" content="VuePress 1.5.2">
+    <link rel="icon" href="https://blog-static.cnblogs.com/files/AhuntSun-blog/sun1.ico">
+    <link rel="stylesheet" href="/css/style.css">
+    <script charset="utf-8" src="/js/main.js"></script>
+    <meta name="description" content="🌕今日事,今日毕🌕">
+    <meta name="keywords" content="AhuntSun, vuepress博客, 学习, 分享">
+    <meta name="author" content="AhuntSun">
+    <link rel="preload" href="/assets/css/0.styles.265dc05e.css" as="style"><link rel="preload" href="/assets/js/app.b0601913.js" as="script"><link rel="preload" href="/assets/js/2.39079bb7.js" as="script"><link rel="preload" href="/assets/js/16.6f261a0c.js" as="script"><link rel="prefetch" href="/assets/js/10.45ee0c2b.js"><link rel="prefetch" href="/assets/js/100.7e91dc57.js"><link rel="prefetch" href="/assets/js/101.9a53727b.js"><link rel="prefetch" href="/assets/js/102.9dbd6f0c.js"><link rel="prefetch" href="/assets/js/103.2ec33f96.js"><link rel="prefetch" href="/assets/js/104.8049d58f.js"><link rel="prefetch" href="/assets/js/105.20a79a3b.js"><link rel="prefetch" href="/assets/js/106.aa72465a.js"><link rel="prefetch" href="/assets/js/107.da121343.js"><link rel="prefetch" href="/assets/js/108.2d09a256.js"><link rel="prefetch" href="/assets/js/109.e61745b8.js"><link rel="prefetch" href="/assets/js/11.b407ef49.js"><link rel="prefetch" href="/assets/js/110.fad61cfc.js"><link rel="prefetch" href="/assets/js/111.0255f8ec.js"><link rel="prefetch" href="/assets/js/112.948bcd68.js"><link rel="prefetch" href="/assets/js/113.cf4371d7.js"><link rel="prefetch" href="/assets/js/114.dc6fe7d3.js"><link rel="prefetch" href="/assets/js/115.eb78c3dc.js"><link rel="prefetch" href="/assets/js/116.fb3c3440.js"><link rel="prefetch" href="/assets/js/117.c2b586ca.js"><link rel="prefetch" href="/assets/js/118.da53e4f9.js"><link rel="prefetch" href="/assets/js/119.9c25f9fc.js"><link rel="prefetch" href="/assets/js/12.11166a53.js"><link rel="prefetch" href="/assets/js/120.1d80f245.js"><link rel="prefetch" href="/assets/js/121.68bd7c29.js"><link rel="prefetch" href="/assets/js/122.fdc0a447.js"><link rel="prefetch" href="/assets/js/123.364ac2a8.js"><link rel="prefetch" href="/assets/js/124.dc2bed8e.js"><link rel="prefetch" href="/assets/js/125.bd9294cb.js"><link rel="prefetch" href="/assets/js/126.d402a939.js"><link rel="prefetch" href="/assets/js/127.d379f310.js"><link rel="prefetch" href="/assets/js/128.c84966a5.js"><link rel="prefetch" href="/assets/js/129.659379d0.js"><link rel="prefetch" href="/assets/js/13.d2399a3d.js"><link rel="prefetch" href="/assets/js/130.35e6b6a2.js"><link rel="prefetch" href="/assets/js/14.8caa2a1e.js"><link rel="prefetch" href="/assets/js/15.f2adb21d.js"><link rel="prefetch" href="/assets/js/17.685c565e.js"><link rel="prefetch" href="/assets/js/18.41530140.js"><link rel="prefetch" href="/assets/js/19.c0492364.js"><link rel="prefetch" href="/assets/js/20.76a6a882.js"><link rel="prefetch" href="/assets/js/21.5c400fc2.js"><link rel="prefetch" href="/assets/js/22.97329f20.js"><link rel="prefetch" href="/assets/js/23.637ef9cc.js"><link rel="prefetch" href="/assets/js/24.8867221e.js"><link rel="prefetch" href="/assets/js/25.b97cf86f.js"><link rel="prefetch" href="/assets/js/26.74761763.js"><link rel="prefetch" href="/assets/js/27.855ba5a1.js"><link rel="prefetch" href="/assets/js/28.77addf61.js"><link rel="prefetch" href="/assets/js/29.52d13e9e.js"><link rel="prefetch" href="/assets/js/3.1842561f.js"><link rel="prefetch" href="/assets/js/30.6b3c337e.js"><link rel="prefetch" href="/assets/js/31.39536375.js"><link rel="prefetch" href="/assets/js/32.33b12180.js"><link rel="prefetch" href="/assets/js/33.a6124111.js"><link rel="prefetch" href="/assets/js/34.996b9142.js"><link rel="prefetch" href="/assets/js/35.e33cad94.js"><link rel="prefetch" href="/assets/js/36.4f4c031f.js"><link rel="prefetch" href="/assets/js/37.421a7a69.js"><link rel="prefetch" href="/assets/js/38.048d7d4c.js"><link rel="prefetch" href="/assets/js/39.68e2eb05.js"><link rel="prefetch" href="/assets/js/4.e00be33d.js"><link rel="prefetch" href="/assets/js/40.d5dbd643.js"><link rel="prefetch" href="/assets/js/41.c62088ec.js"><link rel="prefetch" href="/assets/js/42.593b19e9.js"><link rel="prefetch" href="/assets/js/43.c4c7b7dd.js"><link rel="prefetch" href="/assets/js/44.1805103a.js"><link rel="prefetch" href="/assets/js/45.ca4c060a.js"><link rel="prefetch" href="/assets/js/46.06724024.js"><link rel="prefetch" href="/assets/js/47.fb3fde17.js"><link rel="prefetch" href="/assets/js/48.4f9b0737.js"><link rel="prefetch" href="/assets/js/49.9c388022.js"><link rel="prefetch" href="/assets/js/5.241d7fcd.js"><link rel="prefetch" href="/assets/js/50.06a0b9c5.js"><link rel="prefetch" href="/assets/js/51.6e40e565.js"><link rel="prefetch" href="/assets/js/52.4a8dde8c.js"><link rel="prefetch" href="/assets/js/53.b9f38421.js"><link rel="prefetch" href="/assets/js/54.4c25996d.js"><link rel="prefetch" href="/assets/js/55.cb79df0a.js"><link rel="prefetch" href="/assets/js/56.b5a0144a.js"><link rel="prefetch" href="/assets/js/57.356f4d81.js"><link rel="prefetch" href="/assets/js/58.9f0a3b3a.js"><link rel="prefetch" href="/assets/js/59.dbfd24e4.js"><link rel="prefetch" href="/assets/js/6.8525e477.js"><link rel="prefetch" href="/assets/js/60.28ccf65f.js"><link rel="prefetch" href="/assets/js/61.6ac05c36.js"><link rel="prefetch" href="/assets/js/62.1421efab.js"><link rel="prefetch" href="/assets/js/63.31644a5d.js"><link rel="prefetch" href="/assets/js/64.f68da1e0.js"><link rel="prefetch" href="/assets/js/65.b24f5397.js"><link rel="prefetch" href="/assets/js/66.49f9e37a.js"><link rel="prefetch" href="/assets/js/67.53f37240.js"><link rel="prefetch" href="/assets/js/68.7ea9b5e6.js"><link rel="prefetch" href="/assets/js/69.1d826a0d.js"><link rel="prefetch" href="/assets/js/7.2f68934b.js"><link rel="prefetch" href="/assets/js/70.70e253a1.js"><link rel="prefetch" href="/assets/js/71.59822167.js"><link rel="prefetch" href="/assets/js/72.08ca9d22.js"><link rel="prefetch" href="/assets/js/73.7d3c99dd.js"><link rel="prefetch" href="/assets/js/74.f6c27178.js"><link rel="prefetch" href="/assets/js/75.c1680a86.js"><link rel="prefetch" href="/assets/js/76.afb1d474.js"><link rel="prefetch" href="/assets/js/77.067a9cbe.js"><link rel="prefetch" href="/assets/js/78.9589bc9b.js"><link rel="prefetch" href="/assets/js/79.febdf489.js"><link rel="prefetch" href="/assets/js/8.4dc4cb23.js"><link rel="prefetch" href="/assets/js/80.15b95dc8.js"><link rel="prefetch" href="/assets/js/81.2f7360a3.js"><link rel="prefetch" href="/assets/js/82.7f97813d.js"><link rel="prefetch" href="/assets/js/83.3cfc5e9a.js"><link rel="prefetch" href="/assets/js/84.4644cb16.js"><link rel="prefetch" href="/assets/js/85.26be6e22.js"><link rel="prefetch" href="/assets/js/86.df7150ac.js"><link rel="prefetch" href="/assets/js/87.f58ffe38.js"><link rel="prefetch" href="/assets/js/88.5030c5ad.js"><link rel="prefetch" href="/assets/js/89.9344635c.js"><link rel="prefetch" href="/assets/js/9.23c2dab8.js"><link rel="prefetch" href="/assets/js/90.5fef54bf.js"><link rel="prefetch" href="/assets/js/91.456bbb97.js"><link rel="prefetch" href="/assets/js/92.0ff05e99.js"><link rel="prefetch" href="/assets/js/93.41e0fdea.js"><link rel="prefetch" href="/assets/js/94.7c636190.js"><link rel="prefetch" href="/assets/js/95.f263867e.js"><link rel="prefetch" href="/assets/js/96.ce0f8277.js"><link rel="prefetch" href="/assets/js/97.de49c6b0.js"><link rel="prefetch" href="/assets/js/98.42595a72.js"><link rel="prefetch" href="/assets/js/99.da91ad4c.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.265dc05e.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><!----> <span class="site-name">AhuntSun</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/navitem/git/" class="nav-link">
+  Git应用详解
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="数据结构与算法" class="dropdown-title"><span class="title">数据结构与算法</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>
+          理论篇
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/navitem/algorithm/theory/" class="nav-link router-link-active">
+  JavaScript版基础知识
+</a></li></ul></li><li class="dropdown-item"><h4>
+          实战篇
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/navitem/algorithm/example/2offer/" class="nav-link">
+  剑指offer
+</a></li><li class="dropdown-subitem"><a href="/navitem/algorithm/example/leecode/" class="nav-link">
+  leecode精选
+</a></li></ul></li></ul></div></div><div class="nav-item"><a href="/navitem/article/" class="nav-link">
+  好文转载
+</a></div><div class="nav-item"><a href="/navitem/essay/" class="nav-link">
+  随笔整合
+</a></div><div class="nav-item"><a href="/navitem/demo/" class="nav-link">
+  实战Demo
+</a></div><div class="nav-item"><a href="/navitem/esun/" class="nav-link">
+  eSun-UI
+</a></div><div class="nav-item"><a href="/navitem/tech/FE-interview/" class="nav-link">
+  面试宝典
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="工具箱" class="dropdown-title"><span class="title">工具箱</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>
+          在线编辑
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="https://tinypng.com/" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  图片压缩
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></li></ul></li><li class="dropdown-item"><h4>
+          在线服务
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="https://developer.mozilla.org/zh-CN/" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  MDN
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></li><li class="dropdown-subitem"><a href="https://cubic-bezier.com/" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  贝塞尔曲线
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></li><li class="dropdown-subitem"><a href="https://easings.net/en" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  加速度曲线速查
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="实用网站" class="dropdown-title"><span class="title">实用网站</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/navitem/website/1/" class="nav-link">
+  图片编辑
+</a></li><li class="dropdown-item"><!----> <a href="/navitem/website/2/" class="nav-link">
+  样式设计
+</a></li><li class="dropdown-item"><!----> <a href="/navitem/website/3/" class="nav-link">
+  论坛网站
+</a></li><li class="dropdown-item"><!----> <a href="/navitem/website/4/" class="nav-link">
+  在线学习
+</a></li><li class="dropdown-item"><!----> <a href="/navitem/website/5/" class="nav-link">
+  创新社区
+</a></li><li class="dropdown-item"><!----> <a href="/navitem/website/6/" class="nav-link">
+  优质图库
+</a></li><li class="dropdown-item"><!----> <a href="/navitem/website/7/" class="nav-link">
+  UI设计
+</a></li><li class="dropdown-item"><!----> <a href="/navitem/website/8/" class="nav-link">
+  工具网站
+</a></li><li class="dropdown-item"><!----> <a href="/navitem/website/9/" class="nav-link">
+  JavaScript库
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="联系我" class="dropdown-title"><span class="title">联系我</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="https://www.cnblogs.com/AhuntSun-blog/" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  博客园
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></li><li class="dropdown-item"><!----> <a href="https://blog.csdn.net/qq_43425487" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  CSDN
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></li><li class="dropdown-item"><!----> <a href="https://juejin.im/user/5dea331b518825123e7ae8d4" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  掘金
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></li><li class="dropdown-item"><!----> <a href="https://github.com/AhuntSun" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  Github
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></li><li class="dropdown-item"><!----> <a href="https://gitee.com/ahuntsun" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  Gitee
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></li></ul></div></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/navitem/git/" class="nav-link">
+  Git应用详解
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="数据结构与算法" class="dropdown-title"><span class="title">数据结构与算法</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>
+          理论篇
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/navitem/algorithm/theory/" class="nav-link router-link-active">
+  JavaScript版基础知识
+</a></li></ul></li><li class="dropdown-item"><h4>
+          实战篇
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/navitem/algorithm/example/2offer/" class="nav-link">
+  剑指offer
+</a></li><li class="dropdown-subitem"><a href="/navitem/algorithm/example/leecode/" class="nav-link">
+  leecode精选
+</a></li></ul></li></ul></div></div><div class="nav-item"><a href="/navitem/article/" class="nav-link">
+  好文转载
+</a></div><div class="nav-item"><a href="/navitem/essay/" class="nav-link">
+  随笔整合
+</a></div><div class="nav-item"><a href="/navitem/demo/" class="nav-link">
+  实战Demo
+</a></div><div class="nav-item"><a href="/navitem/esun/" class="nav-link">
+  eSun-UI
+</a></div><div class="nav-item"><a href="/navitem/tech/FE-interview/" class="nav-link">
+  面试宝典
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="工具箱" class="dropdown-title"><span class="title">工具箱</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>
+          在线编辑
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="https://tinypng.com/" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  图片压缩
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></li></ul></li><li class="dropdown-item"><h4>
+          在线服务
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="https://developer.mozilla.org/zh-CN/" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  MDN
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></li><li class="dropdown-subitem"><a href="https://cubic-bezier.com/" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  贝塞尔曲线
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></li><li class="dropdown-subitem"><a href="https://easings.net/en" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  加速度曲线速查
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="实用网站" class="dropdown-title"><span class="title">实用网站</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/navitem/website/1/" class="nav-link">
+  图片编辑
+</a></li><li class="dropdown-item"><!----> <a href="/navitem/website/2/" class="nav-link">
+  样式设计
+</a></li><li class="dropdown-item"><!----> <a href="/navitem/website/3/" class="nav-link">
+  论坛网站
+</a></li><li class="dropdown-item"><!----> <a href="/navitem/website/4/" class="nav-link">
+  在线学习
+</a></li><li class="dropdown-item"><!----> <a href="/navitem/website/5/" class="nav-link">
+  创新社区
+</a></li><li class="dropdown-item"><!----> <a href="/navitem/website/6/" class="nav-link">
+  优质图库
+</a></li><li class="dropdown-item"><!----> <a href="/navitem/website/7/" class="nav-link">
+  UI设计
+</a></li><li class="dropdown-item"><!----> <a href="/navitem/website/8/" class="nav-link">
+  工具网站
+</a></li><li class="dropdown-item"><!----> <a href="/navitem/website/9/" class="nav-link">
+  JavaScript库
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="联系我" class="dropdown-title"><span class="title">联系我</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="https://www.cnblogs.com/AhuntSun-blog/" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  博客园
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></li><li class="dropdown-item"><!----> <a href="https://blog.csdn.net/qq_43425487" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  CSDN
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></li><li class="dropdown-item"><!----> <a href="https://juejin.im/user/5dea331b518825123e7ae8d4" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  掘金
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></li><li class="dropdown-item"><!----> <a href="https://github.com/AhuntSun" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  Github
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></li><li class="dropdown-item"><!----> <a href="https://gitee.com/ahuntsun" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  Gitee
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></li></ul></div></div> <!----></nav>  <ul class="sidebar-links"><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading open"><span>JavaScript版数据结构与算法之基础知识</span> <span class="arrow down"></span></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/navitem/algorithm/theory/notes/1.html" class="sidebar-link">01.JavaScript实现栈结构（Stack）</a></li><li><a href="/navitem/algorithm/theory/notes/2.html" class="sidebar-link">02.JavaScript实现队列结构（Queue）</a></li><li><a href="/navitem/algorithm/theory/notes/3.html" class="sidebar-link">03.JavaScript实现单向链表</a></li><li><a href="/navitem/algorithm/theory/notes/4.html" aria-current="page" class="active sidebar-link">04.JavaScript实现双向链表</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/navitem/algorithm/theory/notes/4.html#一、双向链表简介" class="sidebar-link">一、双向链表简介</a></li><li class="sidebar-sub-header"><a href="/navitem/algorithm/theory/notes/4.html#二、封装双向链表类" class="sidebar-link">二、封装双向链表类</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/navitem/algorithm/theory/notes/4.html#_2-0-创建双向链表类" class="sidebar-link">2.0.创建双向链表类</a></li><li class="sidebar-sub-header"><a href="/navitem/algorithm/theory/notes/4.html#_2-1-append-element" class="sidebar-link">2.1.append(element)</a></li><li class="sidebar-sub-header"><a href="/navitem/algorithm/theory/notes/4.html#_2-2-tostring-汇总" class="sidebar-link">2.2.toString()汇总</a></li><li class="sidebar-sub-header"><a href="/navitem/algorithm/theory/notes/4.html#_2-3-insert-position-element" class="sidebar-link">2.3.insert(position,element)</a></li><li class="sidebar-sub-header"><a href="/navitem/algorithm/theory/notes/4.html#_2-4-get-position" class="sidebar-link">2.4.get(position)</a></li><li class="sidebar-sub-header"><a href="/navitem/algorithm/theory/notes/4.html#_2-5-indexof-element" class="sidebar-link">2.5.indexOf(element)</a></li><li class="sidebar-sub-header"><a href="/navitem/algorithm/theory/notes/4.html#_2-6-update-position-element" class="sidebar-link">2.6.update(position,element)</a></li><li class="sidebar-sub-header"><a href="/navitem/algorithm/theory/notes/4.html#_2-7-removeat-position" class="sidebar-link">2.7.removeAt(position)</a></li><li class="sidebar-sub-header"><a href="/navitem/algorithm/theory/notes/4.html#_2-8-其他方法" class="sidebar-link">2.8.其他方法</a></li><li class="sidebar-sub-header"><a href="/navitem/algorithm/theory/notes/4.html#_2-9-完整实现" class="sidebar-link">2.9.完整实现</a></li></ul></li><li class="sidebar-sub-header"><a href="/navitem/algorithm/theory/notes/4.html#三、链表结构总结" class="sidebar-link">三、链表结构总结</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/navitem/algorithm/theory/notes/4.html#_3-1-注意点" class="sidebar-link">3.1.注意点</a></li><li class="sidebar-sub-header"><a href="/navitem/algorithm/theory/notes/4.html#_3-2-链表的增删改查" class="sidebar-link">3.2.链表的增删改查</a></li><li class="sidebar-sub-header"><a href="/navitem/algorithm/theory/notes/4.html#_3-3-修改链表引用指向" class="sidebar-link">3.3.修改链表引用指向</a></li><li class="sidebar-sub-header"><a href="/navitem/algorithm/theory/notes/4.html#_3-4-遍历链表" class="sidebar-link">3.4.遍历链表</a></li></ul></li></ul></li><li><a href="/navitem/algorithm/theory/notes/5.html" class="sidebar-link">05.JavaScript实现集合与字典</a></li><li><a href="/navitem/algorithm/theory/notes/6.html" class="sidebar-link">06.JavaScript实现哈希表</a></li><li><a href="/navitem/algorithm/theory/notes/7.html" class="sidebar-link">07.JavaScript实现图结构</a></li><li><a href="/navitem/algorithm/theory/notes/8.html" class="sidebar-link">08.JavaScript实现树结构（一）</a></li><li><a href="/navitem/algorithm/theory/notes/9.html" class="sidebar-link">09.JavaScript实现树结构（二）</a></li><li><a href="/navitem/algorithm/theory/notes/10.html" class="sidebar-link">10.图解红黑树</a></li><li><a href="/navitem/algorithm/theory/notes/11.html" class="sidebar-link">11.JavaScript实现排序算法</a></li></ul></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="_04-javascript实现双向链表"><a href="#_04-javascript实现双向链表" class="header-anchor">#</a> 04.JavaScript实现双向链表</h1> <h2 id="一、双向链表简介"><a href="#一、双向链表简介" class="header-anchor">#</a> 一、双向链表简介</h2> <p><strong>双向链表</strong>：既可以<strong>从头遍历到尾</strong>，又可以<strong>从尾遍历到头</strong>。也就是说链表连接的过程是<strong>双向</strong>的，它的实现原理是：一个节点既有<strong>向前连接的引用</strong>，也有一个<strong>向后连接的引用</strong>。</p> <p><strong>双向链表的缺点：</strong></p> <ul><li>每次在<strong>插入或删除</strong>某个节点时，都需要处理四个引用，而不是两个，实现起来会困难些；</li> <li>相对于单向链表，所占<strong>内存空间更大</strong>一些；</li> <li>但是，相对于双向链表的便利性而言，这些缺点微不足道。</li></ul> <p><strong>双向链表的结构：</strong></p> <p><img src="https://gitee.com/ahuntsun/BlogImgs/raw/master/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/%E5%8F%8C%E5%90%91%E9%93%BE%E8%A1%A8/1.png" alt="image-20200227204728456"></p> <ul><li>双向链表不仅有<strong>head</strong>指针指向第一个节点，而且有<strong>tail</strong>指针指向最后一个节点；</li> <li>每一个节点由三部分组成：<strong>item</strong>储存数据、<strong>prev</strong>指向前一个节点、<strong>next</strong>指向后一个节点；</li> <li>双向链表的第一个节点的prev指向<strong>null</strong>；</li> <li>双向链表的最后一个节点的next指向<strong>null</strong>；</li></ul> <p><strong>双向链表常见的操作（方法）：</strong></p> <ul><li>append（element）：向链表尾部添加一个新的项；</li> <li>inset（position，element）：向链表的特定位置插入一个新的项；</li> <li>get（element）：获取对应位置的元素；</li> <li>indexOf（element）：返回元素在链表中的索引，如果链表中没有元素就返回-1；</li> <li>update（position，element）：修改某个位置的元素；</li> <li>removeAt（position）：从链表的特定位置移除一项；</li> <li>isEmpty（）：如果链表中不包含任何元素，返回trun，如果链表长度大于0则返回false；</li> <li>size（）：返回链表包含的元素个数，与数组的length属性类似；</li> <li>toString（）：由于链表项使用了Node类，就需要重写继承自JavaScript对象默认的toString方法，让其只输出元素的值；</li> <li>forwardString（）：返回正向遍历节点字符串形式；</li> <li>backwordString（）：返回反向遍历的节点的字符串形式；</li></ul> <h2 id="二、封装双向链表类"><a href="#二、封装双向链表类" class="header-anchor">#</a> 二、封装双向链表类</h2> <h3 id="_2-0-创建双向链表类"><a href="#_2-0-创建双向链表类" class="header-anchor">#</a> 2.0.创建双向链表类</h3> <p>先创建双向链表类DoubleLinklist，并添加基本属性，再实现双向链表的常用方法：</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>   //封装双向链表类
+    function DoubleLinklist(){
+      //封装内部类：节点类
+      function Node(data){
+        this.data = data
+        this.prev = null
+        this.next = null
+      }
+
+      //属性
+      this.head = null
+      this.tail ==null
+      this.length = 0
+      }
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br></div></div><h3 id="_2-1-append-element"><a href="#_2-1-append-element" class="header-anchor">#</a> 2.1.append(element)</h3> <p><strong>代码实现：</strong></p> <div class="language- line-numbers-mode"><pre class="language-text"><code>      //append方法
+      DoubleLinklist.prototype.append = data =&gt; {
+        //1.根据data创建新节点
+        let newNode = new Node(data)
+
+        //2.添加节点
+        //情况1：添加的是第一个节点
+        if (this.length == 0) {
+          this.tail = newNode
+          this.head = newNode 
+        //情况2：添加的不是第一个节点
+        }else {
+          newNode.prev = this.tail
+          this.tail.next = newNode
+          this.tail = newNode
+        }
+
+        //3.length+1
+        this.length += 1
+      }
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br></div></div><p><strong>过程详解：</strong></p> <p>添加节点时分为多种情况：</p> <ul><li>情况1：添加的是第一个节点：只需要让head和tail都指向新节点即可；</li></ul> <p><img src="https://gitee.com/ahuntsun/BlogImgs/raw/master/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/%E5%8F%8C%E5%90%91%E9%93%BE%E8%A1%A8/2.png" alt="image-20200228094847845"></p> <ul><li><p>情况2：添加的不是第一个节点，如下图所示：只需要改变相关引用的指向即可。</p> <ul><li>通过：newNode.prev = this.tail：建立指向1；</li> <li>通过：this.tail.next = newNode：建立指向2；</li> <li>通过：this.tail = newNode：建立指向3</li></ul> <p>要注意改变变量指向的顺序，最后修改tail指向，这样未修改前tail始终指向原链表的最后一个节点。</p></li></ul> <p><img src="https://gitee.com/ahuntsun/BlogImgs/raw/master/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/%E5%8F%8C%E5%90%91%E9%93%BE%E8%A1%A8/3.png" alt="image-20200228095048677"></p> <p><img src="https://gitee.com/ahuntsun/BlogImgs/raw/master/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/%E5%8F%8C%E5%90%91%E9%93%BE%E8%A1%A8/4.png" alt="image-20200228095135301"></p> <p><strong>测试代码：</strong></p> <div class="language- line-numbers-mode"><pre class="language-text"><code>   //测试代码
+   //1.创建双向链表
+   let list = new DoubleLinklist()
+
+    //2.测试append方法
+    list.append('aaa')
+    list.append('bbb')
+    list.append('ccc')
+    console.log(list);
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br></div></div><p><strong>测试结果：</strong></p> <ul><li>next方向：</li></ul> <p><img src="https://gitee.com/ahuntsun/BlogImgs/raw/master/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/%E5%8F%8C%E5%90%91%E9%93%BE%E8%A1%A8/5.png" alt="image-20200305223911713"></p> <ul><li>prev方向：</li></ul> <p><img src="https://gitee.com/ahuntsun/BlogImgs/raw/master/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/%E5%8F%8C%E5%90%91%E9%93%BE%E8%A1%A8/6.png" alt="image-20200305224004626"></p> <h3 id="_2-2-tostring-汇总"><a href="#_2-2-tostring-汇总" class="header-anchor">#</a> 2.2.toString()汇总</h3> <p><strong>代码实现：</strong></p> <div class="language- line-numbers-mode"><pre class="language-text"><code>      //将链表转变为字符串形式
+      //一.toString方法
+      DoubleLinklist.prototype.toString = () =&gt; {
+        return this.backwardString()
+      }
+
+      //二.forwardString方法
+      DoubleLinklist.prototype.forwardString = () =&gt; {
+        //1.定义变量
+        let current =this.tail
+        let resultString = &quot;&quot;
+
+        //2.依次向前遍历，获取每一个节点
+        while (current) {
+          resultString += current.data + &quot;--&quot;
+          current = current.prev 
+        }
+        return resultString
+      }
+
+      //三.backwardString方法
+      DoubleLinklist.prototype.backwardString = () =&gt; {
+        //1.定义变量
+        let current = this.head
+        let resultString = &quot;&quot;
+
+        //2.依次向后遍历，获取每一个节点
+        while (current) {
+          resultString += current.data + &quot;--&quot;
+          current = current.next
+        }
+        return resultString
+      }
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br></div></div><p><strong>过程详解：</strong></p> <p>三种获取字符串的方法：<strong>toString（）</strong>、<strong>forwardString（）</strong>、**backwardString（）**实现原理相似，仅以backWardString方法为例：</p> <ul><li>定义current变量记录当前指向的节点。首先让current指向第一个节点，然后通过 current = current.next 依次向后遍历。在while循环中以(current)作为条件遍历链表，只要current ！= null就一直遍历，由此可获取链表所有节点的数据。</li></ul> <p><img src="https://gitee.com/ahuntsun/BlogImgs/raw/master/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/%E5%8F%8C%E5%90%91%E9%93%BE%E8%A1%A8/7.png" alt="image-20200228100030713"></p> <p><strong>测试代码：</strong></p> <div class="language- line-numbers-mode"><pre class="language-text"><code>    //测试代码
+    //1.创建双向链表
+    let list = new DoubleLinklist()
+    
+    //2.测试字符串方法   
+    list.append('aaa')
+    list.append('bbb')
+    list.append('ccc')
+    console.log(list.toString());
+    console.log(list.forwardString());
+    console.log(list.backwardString());
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br></div></div><p><strong>测试结果：</strong></p> <p><img src="https://gitee.com/ahuntsun/BlogImgs/raw/master/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/%E5%8F%8C%E5%90%91%E9%93%BE%E8%A1%A8/8.png" alt="image-20200305225437424"></p> <h3 id="_2-3-insert-position-element"><a href="#_2-3-insert-position-element" class="header-anchor">#</a> 2.3.insert(position,element)</h3> <p><strong>代码实现：</strong></p> <div class="language- line-numbers-mode"><pre class="language-text"><code>      //insert方法
+      DoubleLinklist.prototype.insert = (position, data) =&gt; {
+        //1.越界判断
+        if (position &lt; 0 || position &gt; this.length) return false
+
+        //2.根据data创建新的节点
+        let newNode = new Node(data)
+
+        //3.插入新节点
+        //原链表为空
+          //情况1：插入的newNode是第一个节点
+        if (this.length == 0) {
+          this.head = newNode
+          this.tail = newNode
+        //原链表不为空
+        }else {
+          //情况2：position == 0
+          if (position == 0) {
+            this.head.prev = newNode
+            newNode.next = this.head
+            this.head = newNode
+          //情况3：position == this.length 
+          } else if(position == this.length){
+            this.tail.next = newNode
+            newNode.prev = this.tail
+            this.tail = newNode
+            //情况4：0 &lt; position &lt; this.length
+          }else{
+            let current = this.head
+            let index = 0
+            while(index++ &lt; position){
+              current = current.next
+            }
+            //修改pos位置前后节点变量的指向
+            newNode.next = current
+            newNode.prev = current.prev
+            current.prev.next = newNode
+            current.prev = newNode
+          }
+        }
+        //4.length+1
+        this.length += 1
+        return true//返回true表示插入成功
+      }
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br><span class="line-number">37</span><br><span class="line-number">38</span><br><span class="line-number">39</span><br><span class="line-number">40</span><br><span class="line-number">41</span><br><span class="line-number">42</span><br><span class="line-number">43</span><br><span class="line-number">44</span><br></div></div><p><strong>过程详解：</strong></p> <p>插入节点可分为多种情况：</p> <p><strong>当原链表为空时</strong>：</p> <ul><li>情况1：插入的新节点是链表的第一个节点；只需要让head和tail都指向newNode即可。</li></ul> <p><img src="https://gitee.com/ahuntsun/BlogImgs/raw/master/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/%E5%8F%8C%E5%90%91%E9%93%BE%E8%A1%A8/9.png" alt="image-20200228102437899"></p> <p><strong>当原链表不为空时</strong>：</p> <ul><li>情况2：当position == 0，即在链表的首部添加节点：如下图所示：</li></ul> <p><img src="https://gitee.com/ahuntsun/BlogImgs/raw/master/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/%E5%8F%8C%E5%90%91%E9%93%BE%E8%A1%A8/10.png" alt="image-20200228103942238"></p> <p>首先，通过：this.head.prev = newNode，改变指向1；</p> <p>然后，通过：newNode.next = this.head，改变指向2；</p> <p>最后，通过：this.head = newNode，改变指向3；</p> <p><img src="https://gitee.com/ahuntsun/BlogImgs/raw/master/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/%E5%8F%8C%E5%90%91%E9%93%BE%E8%A1%A8/11.png" alt="image-20200228110014565"></p> <ul><li>情况3：position == this.length，即在链表的尾部添加节点，如下图所示：</li></ul> <p><img src="https://gitee.com/ahuntsun/BlogImgs/raw/master/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/%E5%8F%8C%E5%90%91%E9%93%BE%E8%A1%A8/12.png" alt="image-20200228105207102"></p> <p>首先，通过：this.tail.next = newNode，改变指向1；（注意这里使用this.tail指向原链表最后一个节点，而不是this.head。因为当length&gt;1时，this.head != this.tail。）</p> <p>然后，通过：newNode.prev = this.tail，改变指向2；</p> <p>最后，通过：this.tail = newNode，改变指向3；</p> <p><img src="https://gitee.com/ahuntsun/BlogImgs/raw/master/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/%E5%8F%8C%E5%90%91%E9%93%BE%E8%A1%A8/13.png" alt="image-20200228110745214"></p> <ul><li>情况4：0 &lt; position &lt; this.length，即在链表的中间插入新节点，假设在position = 1的位置插入，如下图所示：</li></ul> <p><img src="https://gitee.com/ahuntsun/BlogImgs/raw/master/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/%E5%8F%8C%E5%90%91%E9%93%BE%E8%A1%A8/14.png" alt="image-20200228112941682"></p> <p>首先，需要定义变量current按照之前的思路，通过while循环找到position位置的后一个节点，循环结束后index = position</p> <p><img src="https://gitee.com/ahuntsun/BlogImgs/raw/master/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/%E5%8F%8C%E5%90%91%E9%93%BE%E8%A1%A8/15.png" alt="image-20200228113257650"></p> <p>如下图所示：当position = 1时，current就指向了Node2。这样操作current就等同于间接地操作Node2，还可以通过current.prev间接获取Node1。得到了newNode的前一个节点和后一个节点就可以通过改变它们的prev和next变量的指向来插入newNode了。</p> <p><img src="https://gitee.com/ahuntsun/BlogImgs/raw/master/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/%E5%8F%8C%E5%90%91%E9%93%BE%E8%A1%A8/16.png" alt="image-20200228120701923"></p> <p>通过：newNode.next = current，改变指向1；</p> <p>通过：newNode.prev = current.prev，改变指向2；</p> <p>通过：current.prev.next = newNode，改变指向3；</p> <blockquote><p>注意必须最后才修改current.prev的指向，不然就无法通过current.prev获取需要操作的Node1了。</p></blockquote> <p>通过：current.prev = current，改变指向4；</p> <p><img src="https://gitee.com/ahuntsun/BlogImgs/raw/master/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/%E5%8F%8C%E5%90%91%E9%93%BE%E8%A1%A8/17.png" alt="image-20200228124931441"></p> <p><strong>测试代码：</strong></p> <div class="language- line-numbers-mode"><pre class="language-text"><code>    //测试代码
+    //1.创建双向链表
+    let list = new DoubleLinklist()
+
+	//2.测试insert方法
+    list.insert(0, '插入链表的第一个元素')
+    list.insert(0, '在链表首部插入元素')
+    list.insert(1, '在链表中间插入元素')
+    list.insert(3, '在链表尾部插入元素')
+    console.log(list);
+    alert(list)
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br></div></div><p><strong>测试结果：</strong></p> <p><img src="https://gitee.com/ahuntsun/BlogImgs/raw/master/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/%E5%8F%8C%E5%90%91%E9%93%BE%E8%A1%A8/18.png" alt="image-20200228130649724"></p> <p><img src="https://gitee.com/ahuntsun/BlogImgs/raw/master/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/%E5%8F%8C%E5%90%91%E9%93%BE%E8%A1%A8/19.png" alt="image-20200228130748735"></p> <h3 id="_2-4-get-position"><a href="#_2-4-get-position" class="header-anchor">#</a> 2.4.get(position)</h3> <p><strong>代码实现：</strong></p> <div class="language- line-numbers-mode"><pre class="language-text"><code>      //get方法
+      DoubleLinklist.prototype.get = position =&gt; {
+        //1.越界判断
+        if (position &lt; 0 || position &gt;= this.length) {//获取元素时position不能等于length
+          return null
+        }
+
+        //2.获取元素
+        let current = null
+        let index = 0
+        //this.length / 2 &gt; position:从头开始遍历
+        if ((this.length / 2) &gt; position) {
+          current = this.head
+          while(index++ &lt; position){
+          current = current.next
+        }
+        //this.length / 2 =&lt; position:从尾开始遍历
+        }else{
+          current = this.tail
+          index = this.length - 1
+          while(index-- &gt; position){
+          current = current.prev
+        }
+        }
+        return current.data
+      }
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br></div></div><p><strong>过程详解：</strong></p> <p>定义两个变量current和index，按照之前的思路通过while循环遍历分别获取当前节点和对应的索引值index，直到找到需要获取的position位置后的一个节点，此时index = pos =x，然后return current.data即可。</p> <p>如果链表的节点数量很多时，这种查找方式效率不高，改进方法为：</p> <blockquote><p>一定要通过this.length来获取链表的节点数否则就会报错。</p></blockquote> <ul><li>当this.length / 2 &gt; position：从头（head）开始遍历；</li> <li>当this.length / 2 &lt; position：从尾（tail）开始遍历；</li></ul> <p><img src="https://gitee.com/ahuntsun/BlogImgs/raw/master/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/%E5%8F%8C%E5%90%91%E9%93%BE%E8%A1%A8/20.png" alt="image-20200228144005347"></p> <p><strong>测试代码：</strong></p> <div class="language- line-numbers-mode"><pre class="language-text"><code>    //测试代码
+    //1.创建双向链表
+    let list = new DoubleLinklist()
+    
+  	//2.测试get方法
+    list.append('a')
+    list.append('b')
+    list.append('b1')
+    list.append('b2')
+    list.append('b3')
+    list.append('b4')
+    list.append('b5')
+    list.append('b6')
+    list.append('b7')
+    console.log(list.get(0));
+    console.log(list.get(7));
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br></div></div><p><strong>测试结果：</strong></p> <p><img src="https://gitee.com/ahuntsun/BlogImgs/raw/master/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/%E5%8F%8C%E5%90%91%E9%93%BE%E8%A1%A8/21.png" alt="image-20200228145413524"></p> <h3 id="_2-5-indexof-element"><a href="#_2-5-indexof-element" class="header-anchor">#</a> 2.5.indexOf(element)</h3> <p><strong>代码实现：</strong></p> <div class="language- line-numbers-mode"><pre class="language-text"><code>      //indexOf方法
+      DoubleLinklist.prototype.indexOf = data =&gt; {
+        //1.定义变量
+        let current = this.head
+        let index = 0
+
+        //2.遍历链表，查找与data相同的节点
+        while(current){
+          if (current.data == data) {
+            return index
+          }
+          current = current.next
+          index += 1
+        }
+        return -1
+      } 
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br></div></div><p><strong>过程详解：</strong></p> <p>以（current）作为条件，通过while循环遍历链表中的所有节点（停止条件为current = null）。在遍历每个节点时将current指向的当前节点的data和传入的data进行比较即可。</p> <p><img src="https://gitee.com/ahuntsun/BlogImgs/raw/master/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/%E5%8F%8C%E5%90%91%E9%93%BE%E8%A1%A8/22.png" alt="image-20200228150427485"></p> <p><strong>测试代码：</strong></p> <div class="language- line-numbers-mode"><pre class="language-text"><code>    //测试代码
+    //1.创建双向链表
+    let list = new DoubleLinklist()
+    
+    //2.测试indexOf方法
+    list.append('a')
+    list.append('b')
+    list.append('c')
+    console.log(list.indexOf('a'));
+    console.log(list.indexOf('c'));
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br></div></div><p><strong>测试结果：</strong></p> <p><img src="https://gitee.com/ahuntsun/BlogImgs/raw/master/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/%E5%8F%8C%E5%90%91%E9%93%BE%E8%A1%A8/23.png" alt="image-20200228150612681"></p> <h3 id="_2-6-update-position-element"><a href="#_2-6-update-position-element" class="header-anchor">#</a> 2.6.update(position,element)</h3> <p><strong>代码实现：</strong></p> <div class="language- line-numbers-mode"><pre class="language-text"><code>     //update方法
+      DoubleLinklist.prototype.update = (position, newData) =&gt; {
+        //1.越界判断
+        if (position &lt; 0 || position &gt;= this.length) {
+          return false
+        }
+
+        //2.寻找正确的节点
+        let current = this.head
+        let index = 0
+        //this.length / 2 &gt; position:从头开始遍历
+        if (this.length / 2 &gt; position) {
+          while(index++ &lt; position){
+          current = current.next
+        }
+        //this.length / 2 =&lt; position:从尾开始遍历
+        }else{
+          current = this.tail
+          index = this.length - 1
+          while (index -- &gt; position) {
+            current = current.prev
+          }
+        }
+
+        //3.修改找到节点的data
+        current.data = newData
+        return true//表示成功修改
+      }
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br></div></div><p><strong>过程详解：</strong></p> <p>以（index++ &lt; position）为条件，通过while循环遍历链表中的节点（停止条件为index = position）。循环结束后，current指向需要修改的节点。</p> <p><img src="https://gitee.com/ahuntsun/BlogImgs/raw/master/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/%E5%8F%8C%E5%90%91%E9%93%BE%E8%A1%A8/24.png" alt="image-20200228152136284"></p> <p><strong>测试代码：</strong></p> <div class="language- line-numbers-mode"><pre class="language-text"><code>    //测试代码
+    //1.创建双向链表
+    let list = new DoubleLinklist()
+    
+    //2.测试update方法
+    list.append('a')
+    list.append('b')
+    console.log(list.update(1, 'c'));
+    console.log(list);
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br></div></div><p><strong>测试结果：</strong></p> <p><img src="https://gitee.com/ahuntsun/BlogImgs/raw/master/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/%E5%8F%8C%E5%90%91%E9%93%BE%E8%A1%A8/25.png" alt="image-20200228151340638"></p> <h3 id="_2-7-removeat-position"><a href="#_2-7-removeat-position" class="header-anchor">#</a> 2.7.removeAt(position)</h3> <p><strong>代码实现：</strong></p> <div class="language- line-numbers-mode"><pre class="language-text"><code>     //removeAt方法
+      DoubleLinklist.prototype.removeAt = position =&gt; {
+        //1.越界判断
+        if (position &lt; 0 || position &gt;= this.length) {
+          return null
+        }
+        
+        //2.删除节点
+        //当链表中length == 1
+        //情况1：链表只有一个节点
+        let current = this.head//定义在最上面方便以下各种情况返回current.data
+        if (this.length == 1) {
+          this.head = null
+          this.tail = null
+        //当链表中length &gt; 1
+        } else{
+          //情况2：删除第一个节点
+          if (position == 0) {
+            this.head.next.prev = null
+            this.head = this.head.next
+          //情况3：删除最后一个节点
+          }else if(position == this.length - 1){
+            current = this.tail//该情况下返回被删除的最后一个节点
+            this.tail.prev.next = null
+            this.tail = this.tail.prev
+          }else{
+          //情况4：删除链表中间的节点
+            let index = 0
+            while(index++ &lt; position){
+              current = current.next
+            }
+            current.next.prev = current.prev
+            current.prev.next = current.next
+          }
+        }
+
+        //3.length -= 1
+        this.length -= 1
+        return current.data//返回被删除节点的数据
+      }
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br><span class="line-number">37</span><br><span class="line-number">38</span><br><span class="line-number">39</span><br><span class="line-number">40</span><br></div></div><p><strong>过程详解：</strong></p> <p>删除节点时有多种情况：</p> <p><strong>当链表的length = 1时</strong>：</p> <ul><li>情况1：删除链表中的所有节点：只需要让链表的head和tail指向null即可。</li></ul> <p><img src="https://gitee.com/ahuntsun/BlogImgs/raw/master/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/%E5%8F%8C%E5%90%91%E9%93%BE%E8%A1%A8/26.png" alt="image-20200228153331976"></p> <p><strong>当链表的length &gt; 1时</strong>：</p> <ul><li><p>情况2：删除链表中的第一个节点：</p> <p>通过：this.head.next.prev = null，改变指向1；</p> <p>通过：this.head = this.head.next，改变指向2；</p> <p>虽然Node1有引用指向其它节点，但是没有引用指向Node1，那么Node1会被自动回收。</p></li></ul> <p><img src="https://gitee.com/ahuntsun/BlogImgs/raw/master/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/%E5%8F%8C%E5%90%91%E9%93%BE%E8%A1%A8/27.png" alt="image-20200228162347115"></p> <ul><li><p>情况3：删除链表中的最后一个节点：</p> <p>通过：this.tail.prev.next = null，修改指向1；</p> <p>通过：this.tail = this.tail.prev，修改指向2；</p></li></ul> <p><img src="https://gitee.com/ahuntsun/BlogImgs/raw/master/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/%E5%8F%8C%E5%90%91%E9%93%BE%E8%A1%A8/28.png" alt="image-20200228161946691"></p> <ul><li>情况4：删除链表中间的节点：</li></ul> <p>通过while循环找到需要删除的节点，比如position = x，那么需要删除的节点就是Node(x+1)，如下图所示：</p> <p><img src="https://gitee.com/ahuntsun/BlogImgs/raw/master/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/%E5%8F%8C%E5%90%91%E9%93%BE%E8%A1%A8/29.png" alt="image-20200228161648125"></p> <p>通过：current.next.prev = current.prev，修改指向1；</p> <p>通过：current.prev.next = current.next，修改指向2；</p> <p>这样就没有引用指向Node(x+1)了（current虽指向Node(x+1)，但current时临时变量，该方法执行完就会被销毁），随后Node(x+1)就会被自动删除。</p> <p><img src="https://gitee.com/ahuntsun/BlogImgs/raw/master/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/%E5%8F%8C%E5%90%91%E9%93%BE%E8%A1%A8/30.png" alt="image-20200228162415044"></p> <p><strong>测试代码：</strong></p> <div class="language- line-numbers-mode"><pre class="language-text"><code>    //测试代码
+    //1.创建双向链表
+    let list = new DoubleLinklist()	
+	
+	//2.测试removeAt方法
+    list.append('a')
+    list.append('b')
+    list.append('c')
+    console.log(list.removeAt(1));
+    console.log(list);
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br></div></div><p><strong>测试结果：</strong></p> <p><img src="https://gitee.com/ahuntsun/BlogImgs/raw/master/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/%E5%8F%8C%E5%90%91%E9%93%BE%E8%A1%A8/31.png" alt="image-20200228163935060"></p> <h3 id="_2-8-其他方法"><a href="#_2-8-其他方法" class="header-anchor">#</a> 2.8.其他方法</h3> <p>其他方法包括：<strong>remove(element)、isEmpty()、size()、getHead()、getTail()</strong></p> <p><strong>代码实现：</strong></p> <div class="language- line-numbers-mode"><pre class="language-text"><code>  /*--------------------其他方法-------------------*/
+  //八.remove方法
+  DoubleLinklist.prototype.remove = data =&gt; {
+    //1.根据data获取下标值
+    let index = this.indexOf(data)
+    
+    //2.根据index删除对应位置的节点
+    return this.removeAt(index)
+  }
+
+  //九.isEmpty方法
+  DoubleLinklist.prototype.isEmpty = () =&gt; {
+    return this.length == 0
+  }
+
+  //十.size方法
+  DoubleLinklist.prototype.size = () =&gt; {
+    return this.length
+  }
+
+  //十一.getHead方法：获取链表的第一个元素
+  DoubleLinklist.prototype.getHead = () =&gt; {
+    return this.head.data
+  }
+
+  //十二.getTail方法：获取链表的最后一个元素
+  DoubleLinklist.prototype.getTail = () =&gt; {
+    return this.tail.data
+  }
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br></div></div><p><strong>测试代码：</strong></p> <div class="language- line-numbers-mode"><pre class="language-text"><code>    //测试代码
+    //1.创建双向链表
+    let list = new DoubleLinklist()	
+
+/*------------其他方法的测试--------------*/
+    list.append('a')
+    list.append('b')
+    list.append('c')
+    list.append('d')
+    //remove方法
+    console.log(list.remove('a'));
+    console.log(list);
+    //isEmpty方法
+    console.log(list.isEmpty());
+    //size方法
+    console.log(list.size());
+    //getHead方法
+    console.log(list.getHead());
+    //getTead方法
+    console.log(list.getTail());
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br></div></div><p><strong>测试结果：</strong></p> <p><img src="https://gitee.com/ahuntsun/BlogImgs/raw/master/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/%E5%8F%8C%E5%90%91%E9%93%BE%E8%A1%A8/32.png" alt="image-20200228165845014"></p> <h3 id="_2-9-完整实现"><a href="#_2-9-完整实现" class="header-anchor">#</a> 2.9.完整实现</h3> <div class="language- extra-class"><pre><code>//封装双向链表
+function DoubleLinklist(){
+  //封装内部类：节点类
+  function Node(data){
+    this.data = data
+    this.prev = null
+    this.next = null
+  }
+
+  //属性
+  this.head = null
+  this.tail ==null
+  this.length = 0
+
+  //常见的操作：方法
+  //一.append方法
+  DoubleLinklist.prototype.append = data =&gt; {
+    //1.根据data创建新节点
+    let newNode = new Node(data)
+
+    //2.添加节点
+    //情况1：添加的是第一个节点
+    if (this.length == 0) {
+      this.tail = newNode
+      this.head = newNode 
+    //情况2：添加的不是第一个节点
+    }else {
+      newNode.prev = this.tail
+      this.tail.next = newNode
+      this.tail = newNode
+    }
+
+    //3.length+1
+    this.length += 1
+  }
+
+  //二.将链表转变为字符串形式
+  //2.1.toString方法
+  DoubleLinklist.prototype.toString = () =&gt; {
+    return this.backwardString()
+  }
+
+  //2.2.forwardString方法
+  DoubleLinklist.prototype.forwardString = () =&gt; {
+    //1.定义变量
+    let current =this.tail
+    let resultString = &quot;&quot;
+
+    //2.依次向前遍历，获取每一个节点
+    while (current) {
+      resultString += current.data + &quot;--&quot;
+      current = current.prev 
+    }
+    return resultString
+  }
+
+  //2.3.backwardString方法
+  DoubleLinklist.prototype.backwardString = () =&gt; {
+    //1.定义变量
+    let current = this.head
+    let resultString = &quot;&quot;
+
+    //2.依次向后遍历，获取每一个节点
+    while (current) {
+      resultString += current.data + &quot;--&quot;
+      current = current.next
+    }
+    return resultString
+  }
+
+  //三.insert方法
+  DoubleLinklist.prototype.insert = (position, data) =&gt; {
+    //1.越界判断
+    if (position &lt; 0 || position &gt; this.length) return false
+
+    //2.根据data创建新的节点
+    let newNode = new Node(data)
+
+    //3.插入新节点
+    //原链表为空
+      //情况1：插入的newNode是第一个节点
+    if (this.length == 0) {
+      this.head = newNode
+      this.tail = newNode
+    //原链表不为空
+    }else {
+      //情况2：position == 0
+      if (position == 0) {
+        this.head.prev = newNode
+        newNode.next = this.head
+        this.head = newNode
+      //情况3：position == this.length 
+      } else if(position == this.length){
+        this.tail.next = newNode
+        newNode.prev = this.tail
+        this.tail = newNode
+        //情况4：0 &lt; position &lt; this.length
+      }else{
+        let current = this.head
+        let index = 0
+        while(index++ &lt; position){
+          current = current.next
+        }
+        //修改pos位置前后节点变量的指向
+        newNode.next = current
+        newNode.prev = current.prev
+        current.prev.next = newNode
+        current.prev = newNode
+      }
+    }
+    //4.length+1
+    this.length += 1
+    return true//返回true表示插入成功
+  }
+
+  //四.get方法
+  DoubleLinklist.prototype.get = position =&gt; {
+    //1.越界判断
+    if (position &lt; 0 || position &gt;= this.length) {//获取元素时position不能等于length
+      return null
+    }
+
+    //2.获取元素
+    let current = null
+    let index = 0
+    //this.length / 2 &gt; position:从头开始遍历
+    if ((this.length / 2) &gt; position) {
+      current = this.head
+      while(index++ &lt; position){
+      current = current.next
+    }
+    //this.length / 2 =&lt; position:从尾开始遍历
+    }else{
+      current = this.tail
+      index = this.length - 1
+      while(index-- &gt; position){
+      current = current.prev
+    }
+    }
+    return current.data
+  }
+
+  //五.indexOf方法
+  DoubleLinklist.prototype.indexOf = data =&gt; {
+    //1.定义变量
+    let current = this.head
+    let index = 0
+
+    //2.遍历链表，查找与data相同的节点
+    while(current){
+      if (current.data == data) {
+        return index
+      }
+      current = current.next
+      index += 1
+    }
+    return -1
+  } 
+
+  //六.update方法
+  DoubleLinklist.prototype.update = (position, newData) =&gt; {
+    //1.越界判断
+    if (position &lt; 0 || position &gt;= this.length) {
+      return false
+    }
+
+    //2.寻找正确的节点
+    let current = this.head
+    let index = 0
+    //this.length / 2 &gt; position:从头开始遍历
+    if (this.length / 2 &gt; position) {
+      while(index++ &lt; position){
+      current = current.next
+    }
+    //this.length / 2 =&lt; position:从尾开始遍历
+    }else{
+      current = this.tail
+      index = this.length - 1
+      while (index -- &gt; position) {
+        current = current.prev
+      }
+    }
+
+    //3.修改找到节点的data
+    current.data = newData
+    return true//表示成功修改
+  }
+
+  //七.removeAt方法
+  DoubleLinklist.prototype.removeAt = position =&gt; {
+    //1.越界判断
+    if (position &lt; 0 || position &gt;= this.length) {
+      return null
+    }
+    
+    //2.删除节点
+    //当链表中length == 1
+    //情况1：链表只有一个节点
+    let current = this.head//定义在最上面方便以下各种情况返回current.data
+    if (this.length == 1) {
+      this.head = null
+      this.tail = null
+    //当链表中length &gt; 1
+    } else{
+      //情况2：删除第一个节点
+      if (position == 0) {
+        this.head.next.prev = null
+        this.head = this.head.next
+      //情况3：删除最后一个节点
+      }else if(position == this.length - 1){
+        current = this.tail//该情况下返回被删除的最后一个节点
+        this.tail.prev.next = null
+        this.tail = this.tail.prev
+      }else{
+      //情况4：删除链表中间的节点
+        let index = 0
+        while(index++ &lt; position){
+          current = current.next
+        }
+        current.next.prev = current.prev
+        current.prev.next = current.next
+      }
+    }
+
+    //3.length -= 1
+    this.length -= 1
+    return current.data//返回被删除节点的数据
+  }
+  /*--------------------其他方法-------------------*/
+  //八.remove方法
+  DoubleLinklist.prototype.remove = data =&gt; {
+    //1.根据data获取下标值
+    let index = this.indexOf(data)
+    
+    //2.根据index删除对应位置的节点
+    return this.removeAt(index)
+  }
+
+  //九.isEmpty方法
+  DoubleLinklist.prototype.isEmpty = () =&gt; {
+    return this.length == 0
+  }
+
+  //十.size方法
+  DoubleLinklist.prototype.size = () =&gt; {
+    return this.length
+  }
+
+  //十一.getHead方法：获取链表的第一个元素
+  DoubleLinklist.prototype.getHead = () =&gt; {
+    return this.head.data
+  }
+
+  //十二.getTail方法：获取链表的最后一个元素
+  DoubleLinklist.prototype.getTail = () =&gt; {
+    return this.tail.data
+  }
+
+}
+</code></pre></div><h2 id="三、链表结构总结"><a href="#三、链表结构总结" class="header-anchor">#</a> 三、链表结构总结</h2> <p>单向链表有head和next两个属性，双向链表有head、tail、next、prev四个属性。处理好它们的指向，相当于将它们正确地连接在一起，这样就组成了一条链，这就是简单链表的实现。</p> <p>在实际开发中链表使用得非常多，比如Java中的<strong>LinkList</strong>就是双向链表。</p> <h3 id="_3-1-注意点"><a href="#_3-1-注意点" class="header-anchor">#</a> 3.1.注意点</h3> <ul><li>在链表中current = current.next 可以从左往右看，看成是current --&gt; current.next，即current指向current的下一个节点。</li> <li>删除节点的原理：只要没有引用指向该对象，无论该对象是否有引用指向其他对象，该对象都会被回收（删除）。</li> <li>参数中凡是有position的都要进行越界判断。</li></ul> <h3 id="_3-2-链表的增删改查"><a href="#_3-2-链表的增删改查" class="header-anchor">#</a> 3.2.链表的增删改查</h3> <p>以双向链表为例：<strong>链表的增删改查无非就是获取链表中相应的节点改变其中的prev和next两个变量的指向</strong>。</p> <ul><li><p><strong>情况一</strong>：只需要<strong>head</strong>和<strong>tail</strong>两个变量就可以获取需要操作的变量（这里指的是能够轻松获取，当然你想通过head.next.next...或tail.prev.prev...来获取想要的节点也可以），在这种情况下链表的长度length：<strong>0  &lt;= length &lt;=2</strong>。</p></li> <li><p><strong>情况二</strong>：不能靠tail和head来获取到需要操作的变量时，可采用while循环遍历的方式，找到需要操作的节点：</p></li></ul> <p><img src="https://gitee.com/ahuntsun/BlogImgs/raw/master/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/%E5%8F%8C%E5%90%91%E9%93%BE%E8%A1%A8/33.png" alt="image-20200228113257650"></p> <p>在这种情况下，如果我们想要在链表的position = x的位置插入新节点，那么可以通过current获取position的后一个节点Node(x+1)，通过current.prev获取position位置的前一个节点Node(x)；之后修改Node(x+1)和Node(x)中的prev和next两个变量的指向即可在pos=x 的位置插入新节点。</p> <p><img src="https://gitee.com/ahuntsun/BlogImgs/raw/master/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/%E5%8F%8C%E5%90%91%E9%93%BE%E8%A1%A8/34.png" alt="image-20200228133450822"></p> <h3 id="_3-3-修改链表引用指向"><a href="#_3-3-修改链表引用指向" class="header-anchor">#</a> 3.3.修改链表引用指向</h3> <p><strong>应先修改newNode引用的指向，再修改其他引用</strong></p> <ul><li>情况1：通过head和tail引用就能获取需要操作的节点时，最后更改head或tail变量的指向（因为它们分别指向链表的第一个和最后一个节点，获取其他节点时可能需要用到它们）。</li> <li>情况2：使用current获取到需要操作的节点时，最后更改curren.next或current.prev的指向。因为current.next和current.prev表示的是Node(x+2)和Node(x)这两个节点，如下图所示，一旦变更它们的指向就无法获取Node(x)或Node(x+2)了，</li></ul> <p><img src="https://gitee.com/ahuntsun/BlogImgs/raw/master/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/%E5%8F%8C%E5%90%91%E9%93%BE%E8%A1%A8/35.png" alt="image-20200228133725909"></p> <h3 id="_3-4-遍历链表"><a href="#_3-4-遍历链表" class="header-anchor">#</a> 3.4.遍历链表</h3> <p><strong>积累两种遍历思路</strong></p> <ul><li>获取指定的position = x 位置的后一个节点和索引值：</li></ul> <p><img src="https://gitee.com/ahuntsun/BlogImgs/raw/master/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/%E5%8F%8C%E5%90%91%E9%93%BE%E8%A1%A8/36.png" alt="image-20200228144005347"></p> <p><img src="https://gitee.com/ahuntsun/BlogImgs/raw/master/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/%E5%8F%8C%E5%90%91%E9%93%BE%E8%A1%A8/37.png" alt="image-20200228113257650"></p> <p>循环结束后index = position = x，变量current就指向了Node(x+1)，变量index的值为Node(x+1)的索引值x。</p> <ul><li>遍历链表中的所有节点：</li></ul> <p><img src="https://gitee.com/ahuntsun/BlogImgs/raw/master/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/%E5%8F%8C%E5%90%91%E9%93%BE%E8%A1%A8/38.png" alt="image-20200228132334514"></p> <p><img src="https://gitee.com/ahuntsun/BlogImgs/raw/master/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/%E5%8F%8C%E5%90%91%E9%93%BE%E8%A1%A8/39.png" alt="image-20200228145930043"></p> <p>当current.next = null时停止循环，此时current指向链表的最后一个节点。</p> <blockquote><p>参考资料：<a href="https://www.bilibili.com/video/av86801505?from=search&amp;seid=4967761411915016256" target="_blank" rel="noopener noreferrer">JavaScript数据结构与算法<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></p></blockquote></div> <footer class="page-edit"><!----> <div class="last-updated"><span class="prefix">最后更新于:</span> <span class="time">2020年6月13日星期六晚上7点32分</span></div></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/navitem/algorithm/theory/notes/3.html" class="prev">
+        03.JavaScript实现单向链表
+      </a></span> <span class="next"><a href="/navitem/algorithm/theory/notes/5.html">
+        05.JavaScript实现集合与字典
+      </a>
+      →
+    </span></p></div> </main></div><div class="global-ui"><!----></div></div>
+    <script src="/assets/js/app.b0601913.js" defer></script><script src="/assets/js/2.39079bb7.js" defer></script><script src="/assets/js/16.6f261a0c.js" defer></script>
+  </body>
+</html>
